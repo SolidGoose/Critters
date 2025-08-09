@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct0jsie786wrj"]
+
+[ext_resource type="Script" uid="uid://unx1u5v87s0j" path="res://Scripts/level_1.gd" id="1_vk57k"]
+[ext_resource type="PackedScene" uid="uid://ckm18n3hcva0t" path="res://Scenes/death_area.tscn" id="2_8ffim"]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_vk57k")
+
+[node name="DeathArea" parent="." instance=ExtResource("2_8ffim")]
+position = Vector2(1607, 797)
+rotation = -0.785398
+
+[node name="SpawnCooldown" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="SpawnCooldown" to="." method="_on_spawn_cooldown_timeout"]

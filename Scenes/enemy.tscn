@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://crq547s6cp4yg"]
+
+[ext_resource type="Script" uid="uid://cniii0gjjpm12" path="res://Scripts/enemy.gd" id="1_hghv2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ne65n"]
+radius = 100.0
+
+[node name="Enemy" type="Area2D" groups=["Enemy"]]
+script = ExtResource("1_hghv2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ne65n")
+debug_color = Color(0.966863, 0.0869114, 0.40798, 0.42)
