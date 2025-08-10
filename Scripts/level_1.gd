@@ -1,29 +1,39 @@
 extends Node2D
 
+var spawnCoodrinates: Array[int] = [55, 375, 695]
+var spawnY: int = -100
+@onready var console: LineEdit = get_node('ConsoleLine')
+var zIndex: int = -100
 
-var spawnCoodrinates: Array[Vector2] = [
-	Vector2(120, 470),
-	Vector2(290, 298),
-	Vector2(460, 126),
-]
 
-func _draw() -> void:
-	draw_line(Vector2(0, 540), Vector2(960, 1080), Color.BLACK, 10)
-	draw_line(Vector2(0, 270), Vector2(1440, 1080), Color.BLACK, 10)
-	draw_line(Vector2(0, 0), Vector2(1920, 1080), Color.BLACK, 10)
-	draw_line(Vector2(480, 0), Vector2(1920, 810), Color.BLACK, 10)
+func get_word_dict_from_node(node: Node) -> Dictionary:
+	var label = node.get_node('Word')
+	if label:
+		return {label.text: node, "progress": node.progress_ratio}
+	else:
+		return {}
 
-func _ready() -> void:
-	var enemyScene = preload("res://Scenes/enemy.tscn")
-	var instance = enemyScene.instantiate()
-	instance.global_position.x = 135
-	instance.global_position.y = 210
-	add_child(instance)
 
 func _on_spawn_cooldown_timeout() -> void:
 	var enemyScene = preload("res://Scenes/enemy.tscn")
-	var instance = enemyScene.instantiate()
-	var coordinates = spawnCoodrinates.pick_random()
-	print(coordinates)
-	instance.global_position = coordinates
-	add_child(instance)
+	var enemy = enemyScene.instantiate()
+	enemy.z_index = zIndex
+	zIndex -= 1
+
+	var tracks = get_node('Tracks').get_children()
+	var track = tracks.pick_random()
+	track.add_child(enemy)
+
+
+func _on_console_line_text_submitted(new_text: String) -> void:
+	var enemyNodes: Array[Node] = get_tree().get_nodes_in_group('EnemyPathFollow')
+	enemyNodes.sort_custom(func (a, b): return a.progress_ratio > b.progress_ratio)
+	print(enemyNodes)
+	if enemyNodes.size() > 0:
+		var wordsDict = enemyNodes.map(get_word_dict_from_node)
+		for dict in wordsDict:
+			if dict.has(new_text):
+				dict[new_text].death()
+				break
+
+	console.clear()

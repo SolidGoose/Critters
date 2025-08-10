@@ -1,13 +1,11 @@
-extends Area2D
+extends PathFollow2D
 
-var speed: int
+var speed: float = 0.1
+var moving_angle = 44
 
-func _ready() -> void:
-	rotation_degrees = 29.5
-	speed = 500
 
 func _process(delta: float) -> void:
-	position += transform.x * speed * delta
-
-func death() -> void:
-	queue_free()
+	progress_ratio += speed * delta
+	if progress_ratio == 1.0:
+		queue_free()
+		print("Game Over")
