@@ -1,0 +1,7 @@
+- Add different enemy types using custom resources
+- Create spawning system supporting waves
+- Create perks and use them between waves (also think of a way to display bought perks)
+- Add main menu
+- Add lifes and Game over
+- Think of the boss levels
+    - Add second console (or more)

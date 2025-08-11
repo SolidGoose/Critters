@@ -1,7 +1,7 @@
 extends PathFollow2D
 
+
 var speed: float = 0.1
-var moving_angle = 44
 
 
 func _process(delta: float) -> void:

@@ -1,5 +1,6 @@
 extends Label
 
+
 var dictionary: Array[String] = [
     "nut",
     "tail",
@@ -17,7 +18,6 @@ var dictionary: Array[String] = [
     "fur",
     "den"
 ]
-
 
 func _ready() -> void:
 	text = dictionary.pick_random()

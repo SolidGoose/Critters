@@ -1,15 +1,15 @@
 extends Node2D
 
+
 var spawnCoodrinates: Array[int] = [55, 375, 695]
 var spawnY: int = -100
 @onready var console: LineEdit = get_node('ConsoleLine')
 var zIndex: int = -100
 
-
 func get_word_dict_from_node(node: Node) -> Dictionary:
 	var label = node.get_node('Word')
 	if label:
-		return {label.text: node, "progress": node.progress_ratio}
+		return {label.text: node}
 	else:
 		return {}
 
