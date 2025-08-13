@@ -52,8 +52,6 @@ func _on_console_line_text_submitted(new_text: String) -> void:
 	enemyNodes.sort_custom(func (a, b): return a.progress_ratio > b.progress_ratio)
 	print(enemyNodes)
 
-	wordsArray: Array[String] = new_text.split()
-
 	if enemyNodes.size() > 0:
 		var wordsDict = enemyNodes.map(get_word_dict_from_node)
 		for dict in wordsDict:
