@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ct0jsie786wrj"]
+[gd_scene load_steps=7 format=3 uid="uid://ct0jsie786wrj"]
 
 [ext_resource type="Script" uid="uid://unx1u5v87s0j" path="res://Scripts/level_1.gd" id="1_vk57k"]
+[ext_resource type="Script" uid="uid://f67xt7mqsag2" path="res://Scripts/label.gd" id="3_7p6j4"]
 [ext_resource type="Script" uid="uid://b1lyb0drxtjf" path="res://Scripts/console_line.gd" id="3_xfk5q"]
 
 [sub_resource type="Curve2D" id="Curve2D_xfk5q"]
@@ -25,6 +26,10 @@ point_count = 2
 script = ExtResource("1_vk57k")
 
 [node name="SpawnCooldown" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Clock" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
 
@@ -77,5 +82,15 @@ caret_blink = true
 caret_force_displayed = true
 script = ExtResource("3_xfk5q")
 
+[node name="Label" type="Label" parent="."]
+offset_left = 1744.0
+offset_top = 15.0
+offset_right = 1887.0
+offset_bottom = 172.0
+theme_override_font_sizes/font_size = 100
+text = "sd"
+script = ExtResource("3_7p6j4")
+
 [connection signal="timeout" from="SpawnCooldown" to="." method="_on_spawn_cooldown_timeout"]
+[connection signal="timeout" from="Clock" to="." method="_on_clock_timeout"]
 [connection signal="text_submitted" from="ConsoleLine" to="." method="_on_console_line_text_submitted"]

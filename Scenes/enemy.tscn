@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://crq547s6cp4yg"]
+[gd_scene load_steps=6 format=3 uid="uid://crq547s6cp4yg"]
 
 [ext_resource type="Script" uid="uid://cniii0gjjpm12" path="res://Scripts/enemy.gd" id="1_hghv2"]
 [ext_resource type="Script" uid="uid://cuufv5wa55yj" path="res://Scripts/word.gd" id="2_1f0kj"]
 [ext_resource type="Texture2D" uid="uid://c6ohi0spg2wso" path="res://o.png" id="2_afpow"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_afpow"]
+radius = 50.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hghv2"]
 bg_color = Color(0.41024, 0.41024, 0.41024, 1)
@@ -22,7 +25,13 @@ script = ExtResource("1_hghv2")
 position = Vector2(-75, -86)
 texture = ExtResource("2_afpow")
 
+[node name="Area2D" type="Area2D" parent="." groups=["EnemyArea"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_afpow")
+
 [node name="Word" type="Label" parent="."]
+z_index = 100
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

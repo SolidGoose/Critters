@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c14215skambxr"]
+
+[ext_resource type="Script" uid="uid://cmp80pxu3lgfo" path="res://Scripts/blast_area.gd" id="1_cvv4h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2nfe6"]
+radius = 200.0
+
+[node name="BlastArea" type="Area2D"]
+script = ExtResource("1_cvv4h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2nfe6")

@@ -1,10 +1,27 @@
 extends Node2D
 
 
+const SPAWN_COOLDOWN: float = 3.0
 var spawnCoodrinates: Array[int] = [55, 375, 695]
 var spawnY: int = -100
-@onready var console: LineEdit = get_node('ConsoleLine')
 var zIndex: int = -100
+var time: float = 0.0
+@onready var console: LineEdit = get_node('ConsoleLine')
+@onready var spawnCooldown: Timer = get_node('SpawnCooldown')
+
+var enemyScene = preload("res://Scenes/enemy.tscn")
+var blastScene = preload("res://Scenes/blast_area.tscn")
+
+
+func _ready() -> void:
+	randomize()
+
+
+func _process(delta: float) -> void:
+	time += 0.016
+	var s = 1.5
+	spawnCooldown.wait_time = s*cos(0.2*time + PI) + 2.2
+
 
 func get_word_dict_from_node(node: Node) -> Dictionary:
 	var label = node.get_node('Word')
@@ -15,7 +32,6 @@ func get_word_dict_from_node(node: Node) -> Dictionary:
 
 
 func _on_spawn_cooldown_timeout() -> void:
-	var enemyScene = preload("res://Scenes/enemy.tscn")
 	var enemy = enemyScene.instantiate()
 	enemy.z_index = zIndex
 	zIndex -= 1
@@ -25,15 +41,25 @@ func _on_spawn_cooldown_timeout() -> void:
 	track.add_child(enemy)
 
 
+func create_blast_area(spawnPosition: Vector2) -> void:
+	var blast = blastScene.instantiate()
+	blast.global_position = spawnPosition
+	add_child(blast)
+
+
 func _on_console_line_text_submitted(new_text: String) -> void:
 	var enemyNodes: Array[Node] = get_tree().get_nodes_in_group('EnemyPathFollow')
 	enemyNodes.sort_custom(func (a, b): return a.progress_ratio > b.progress_ratio)
 	print(enemyNodes)
+
+	wordsArray: Array[String] = new_text.split()
+
 	if enemyNodes.size() > 0:
 		var wordsDict = enemyNodes.map(get_word_dict_from_node)
 		for dict in wordsDict:
 			if dict.has(new_text):
 				dict[new_text].death()
+				create_blast_area(dict[new_text].global_position)
 				break
 
 	console.clear()

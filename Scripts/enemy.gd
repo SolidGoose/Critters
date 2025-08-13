@@ -9,3 +9,7 @@ func _process(delta: float) -> void:
 	if progress_ratio == 1.0:
 		queue_free()
 		print("Game Over")
+
+
+func death() -> void:
+	queue_free()

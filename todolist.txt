@@ -1,7 +1,15 @@
 - Add different enemy types using custom resources
 - Create spawning system supporting waves
+- Add several more tracks close to the exisitng ones,
+  to diverse enemies running pattern
 - Create perks and use them between waves (also think of a way to display bought perks)
 - Add main menu
 - Add lifes and Game over
+
+Extra mile
+
 - Think of the boss levels
-    - Add second console (or more)
+	- Add second console (or more)
+- More enemies
+- Level menu
+- Perk combos
