@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ct0jsie786wrj"]
+[gd_scene load_steps=8 format=3 uid="uid://ct0jsie786wrj"]
 
 [ext_resource type="Script" uid="uid://unx1u5v87s0j" path="res://Scripts/level_1.gd" id="1_vk57k"]
 [ext_resource type="Script" uid="uid://f67xt7mqsag2" path="res://Scripts/label.gd" id="3_7p6j4"]
 [ext_resource type="Script" uid="uid://b1lyb0drxtjf" path="res://Scripts/console_line.gd" id="3_xfk5q"]
+[ext_resource type="PackedScene" uid="uid://m67cvinwnvq2" path="res://Scenes/skill_info.tscn" id="4_7p6j4"]
 
 [sub_resource type="Curve2D" id="Curve2D_xfk5q"]
 _data = {
@@ -90,6 +91,10 @@ offset_bottom = 172.0
 theme_override_font_sizes/font_size = 100
 text = "sd"
 script = ExtResource("3_7p6j4")
+
+[node name="ExplosionSkill" parent="." instance=ExtResource("4_7p6j4")]
+offset_top = 930.0
+offset_bottom = 1080.0
 
 [connection signal="timeout" from="SpawnCooldown" to="." method="_on_spawn_cooldown_timeout"]
 [connection signal="timeout" from="Clock" to="." method="_on_clock_timeout"]

@@ -6,8 +6,9 @@ var spawnCoodrinates: Array[int] = [55, 375, 695]
 var spawnY: int = -100
 var zIndex: int = -100
 var time: float = 0.0
-@onready var console: LineEdit = get_node('ConsoleLine')
-@onready var spawnCooldown: Timer = get_node('SpawnCooldown')
+@onready var console: LineEdit = $ConsoleLine
+@onready var spawnCooldown: Timer = $SpawnCooldown
+@onready var explosionSkill: TextureButton = $ExplosionSkill
 
 var enemyScene = preload("res://Scenes/enemy.tscn")
 var blastScene = preload("res://Scenes/blast_area.tscn")
@@ -50,14 +51,15 @@ func create_blast_area(spawnPosition: Vector2) -> void:
 func _on_console_line_text_submitted(new_text: String) -> void:
 	var enemyNodes: Array[Node] = get_tree().get_nodes_in_group('EnemyPathFollow')
 	enemyNodes.sort_custom(func (a, b): return a.progress_ratio > b.progress_ratio)
-	print(enemyNodes)
 
 	if enemyNodes.size() > 0:
 		var wordsDict = enemyNodes.map(get_word_dict_from_node)
 		for dict in wordsDict:
 			if dict.has(new_text):
+				if not explosionSkill.button_pressed:
+					create_blast_area(dict[new_text].global_position)
+				explosionSkill.button_pressed = true
 				dict[new_text].death()
-				create_blast_area(dict[new_text].global_position)
 				break
 
 	console.clear()
