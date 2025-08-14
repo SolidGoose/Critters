@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://crq547s6cp4yg"]
+[gd_scene load_steps=7 format=3 uid="uid://crq547s6cp4yg"]
 
 [ext_resource type="Script" uid="uid://cniii0gjjpm12" path="res://Scripts/enemy.gd" id="1_hghv2"]
 [ext_resource type="Script" uid="uid://cuufv5wa55yj" path="res://Scripts/word.gd" id="2_1f0kj"]
-[ext_resource type="Texture2D" uid="uid://c6ohi0spg2wso" path="res://o.png" id="2_afpow"]
+[ext_resource type="Resource" uid="uid://wjgq7g7wblih" path="res://Resources/enemy_squirrel.tres" id="2_287tu"]
+[ext_resource type="Texture2D" uid="uid://c6ohi0spg2wso" path="res://Sprites/squirrel.png" id="2_afpow"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_afpow"]
 radius = 50.0
@@ -17,21 +18,26 @@ expand_margin_left = 20.0
 expand_margin_right = 20.0
 
 [node name="EnemyFollowPath" type="PathFollow2D" groups=["EnemyPathFollow"]]
+y_sort_enabled = true
 rotates = false
 loop = false
 script = ExtResource("1_hghv2")
+stats = ExtResource("2_287tu")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="HitboxArea" type="Area2D" parent="." groups=["EnemyArea"]]
+y_sort_enabled = true
+
+[node name="Sprite" type="Sprite2D" parent="HitboxArea"]
+y_sort_enabled = true
 position = Vector2(-75, -86)
 texture = ExtResource("2_afpow")
 
-[node name="Area2D" type="Area2D" parent="." groups=["EnemyArea"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="HitboxShape" type="CollisionShape2D" parent="HitboxArea"]
 shape = SubResource("CircleShape2D_afpow")
 
 [node name="Word" type="Label" parent="."]
 z_index = 100
+y_sort_enabled = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

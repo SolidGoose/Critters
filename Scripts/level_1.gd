@@ -12,6 +12,10 @@ var time: float = 0.0
 
 var enemyScene = preload("res://Scenes/enemy.tscn")
 var blastScene = preload("res://Scenes/blast_area.tscn")
+var enemyStats = [
+	preload("res://Resources/enemy_squirrel.tres"),
+	preload("res://Resources/enemy_mouse.tres"),
+]
 
 
 func _ready() -> void:
@@ -34,11 +38,15 @@ func get_word_dict_from_node(node: Node) -> Dictionary:
 
 func _on_spawn_cooldown_timeout() -> void:
 	var enemy = enemyScene.instantiate()
-	enemy.z_index = zIndex
-	zIndex -= 1
+	enemy.stats = enemyStats.pick_random()
 
 	var tracks = get_node('Tracks').get_children()
 	var track = tracks.pick_random()
+
+	# print(track.name + " spawned enemy: " + enemy.stats.name)
+	var trackNumber = int(track.name.substr(5, 1))
+	enemy.z_index = trackNumber * 20
+
 	track.add_child(enemy)
 
 
@@ -92,7 +100,6 @@ func isSentencePattern(text: String) -> String:
 func _on_console_line_text_submitted(new_text: String) -> void:
 	var enemyNodes: Array[Node] = get_tree().get_nodes_in_group('EnemyPathFollow')
 	enemyNodes.sort_custom(func (a, b): return a.progress_ratio > b.progress_ratio)
-	#print(enemyNodes)
 	
 	# Text processing logic. In the end the command is stored in cmd, and sign in sign.
 	# Sentence is stored if found in sentence_str
@@ -118,11 +125,11 @@ func _on_console_line_text_submitted(new_text: String) -> void:
 	if enemyNodes.size() > 0:
 		var wordsDict = enemyNodes.map(get_word_dict_from_node)
 		for dict in wordsDict:
-			if dict.has(new_text):
-				if not explosionSkill.button_pressed:
-					create_blast_area(dict[new_text].global_position)
-				explosionSkill.button_pressed = true
-				dict[new_text].death()
+			if dict.has(cmd):
+				if not explosionSkill.button_pressed and sign == "!":
+					create_blast_area(dict[cmd].global_position)
+					explosionSkill.button_pressed = true
+				dict[cmd].death()
 				break
 
 	console.clear()

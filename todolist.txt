@@ -12,4 +12,5 @@ Extra mile
 	- Add second console (or more)
 - More enemies
 - Level menu
+- Game saves
 - Perk combos

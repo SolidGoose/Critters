@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c6ohi0spg2wso"
-path="res://.godot/imported/o.png-32d3b5843c98359b9557fafcc551e353.ctex"
+path="res://.godot/imported/squirrel.png-ed7e58ddd65d63cb234ecbfe16489c14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://o.png"
-dest_files=["res://.godot/imported/o.png-32d3b5843c98359b9557fafcc551e353.ctex"]
+source_file="res://Sprites/squirrel.png"
+dest_files=["res://.godot/imported/squirrel.png-ed7e58ddd65d63cb234ecbfe16489c14.ctex"]
 
 [params]
 
