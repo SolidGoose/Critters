@@ -5,13 +5,19 @@ var spawnCoodrinates: Array[int] = [55, 375, 695]
 var spawnY: int = -100
 var zIndex: int = -100
 var time: float = 0.0
+var explosionSkillButton: TextureButton
+var sleepingSkillButton: TextureButton
+
+# Onready nodes
 @onready var console: LineEdit = $ConsoleLine
 @onready var spawnCooldown: Timer = $SpawnCooldown
-@onready var explosionSkill: TextureButton = $GUI/ExplosionSkill
+@onready var explosionSkillPanel: Panel = $GUI/ExplosionSkill
+@onready var sleepingSkillPanel: Panel = $GUI/SleepingSkill
 @onready var healthLabel: Label = $GUI/HealthLabel
 @onready var pointsLabel: Label = $GUI/PointsLabel
 @onready var explosionSfx: AudioStreamPlayer2D = $SFX/Explosion
 
+# Preloads
 var enemyScene = preload("res://Scenes/enemy.tscn")
 var blastScene = preload("res://Scenes/blast_area.tscn")
 var enemyStats = [
@@ -20,9 +26,12 @@ var enemyStats = [
 	preload("res://Resources/Enemies/enemy_rat.tres"),
 ]
 var explosionSkillStats = preload("res://Resources/Skills/explosion_skill.tres")
+var sleepingSkillStats = preload("res://Resources/Skills/sleeping_skill.tres")
 
 
 func _ready() -> void:
+	explosionSkillButton = explosionSkillPanel.get_node('SkillButton')
+	sleepingSkillButton = sleepingSkillPanel.get_node('SkillButton')
 	randomize()
 
 
@@ -76,88 +85,39 @@ func _on_spawn_cooldown_timeout() -> void:
 	track.add_child(enemy)
 
 
-func create_blast_area(spawnPosition: Vector2) -> void:
+func create_blast_area(spawnPosition: Vector2, mark: String) -> void:
 	var blast = blastScene.instantiate()
-	blast.stats = explosionSkillStats
+	match mark:
+		"!":
+			blast.stats = explosionSkillStats
+		"?":
+			blast.stats = sleepingSkillStats
 	blast.global_position = spawnPosition
 	add_child(blast)
 
-# A bunch of functions for matching string patterns
-func isPattern(text:String, pattern: String) -> String:
-	var regex = RegEx.new()
-	regex.compile(pattern)
-	var result = regex.search(text)
-	if result:
-		if result.get_string().length() == text.length():
-			return result.get_string()
-		else:
-			return ""
-	else:
-		return ""
-	
-func isBracketOrSignPattern(text: String) -> String:
-	var pattern = r"\[(\w+)\](\?|\!)?"
-	return isPattern(text, pattern)
-	
-func isWordOrSignPattern(text: String) -> String:
-	var pattern = r"(\w+)(\?|\!)?"
-	return isPattern(text, pattern)
-	
-func isLastCharSign(text: String) -> String:
-	var c = text[text.length()-1]
-	if c == "!" or c == "?": # add more signs here if necessary
-		return c
-	else:
-		return ""
-	
-func getBracketCmd(text:String) -> String:
-	var regex = RegEx.new()
-	var pattern =  r"\[(\w+)\]"
-	regex.compile(pattern)
-	var matches = regex.search_all(text)
-	if matches.size() > 0:
-		return matches[0].get_string(1)
-	else:
-		return ""
-
-func isSentencePattern(text: String) -> String:
-	var pattern = r"^\w+( \w+)*"
-	return isPattern(text, pattern)
 
 func _on_console_line_text_submitted(new_text: String) -> void:
 	var enemyNodes: Array[Node] = get_tree().get_nodes_in_group('EnemyPathFollow')
 	enemyNodes.sort_custom(func (a, b): return a.progress_ratio > b.progress_ratio)
-	
-	# Text processing logic. In the end the command is stored in cmd, and sign in sign.
-	# Sentence is stored if found in sentence_str
-	var bracketsign_str = isBracketOrSignPattern(new_text)
-	var wordsign_str = isWordOrSignPattern(new_text)
-	var sentence_str = isSentencePattern(new_text)
-	var cmd = ""
-	var sign = ""
-	
-	if bracketsign_str != "":
-		cmd = getBracketCmd(bracketsign_str)
-		sign = isLastCharSign(bracketsign_str)
-		
-	if wordsign_str != "":
-		sign = isLastCharSign(wordsign_str)
-		if sign == "":
-			cmd = wordsign_str
-		else:
-			cmd = wordsign_str.substr(0, wordsign_str.length()-1)
-		
-	print("cmd: " + cmd + ", sign: " + sign)		
+
+	var parsedCommand: Dictionary = Utils.parse_console_command(new_text)
+	var cmd: String = parsedCommand['cmd']
+	var mark: String = parsedCommand['mark']
 
 	if enemyNodes.size() > 0:
 		var wordsDict = enemyNodes.map(get_word_dict_from_node)
 		for dict in wordsDict:
 			if dict.has(cmd):
-				if not explosionSkill.button_pressed and sign == "!":
-					create_blast_area(dict[cmd].global_position)
-					explosionSkill.button_pressed = true
+				if not explosionSkillButton.button_pressed and mark == "!":
+					create_blast_area(dict[cmd].global_position, mark)
+					explosionSkillButton.button_pressed = true
 					explosionSfx.play()
-				dict[cmd].death()
+				elif not sleepingSkillButton.button_pressed and mark == "?":
+					create_blast_area(dict[cmd].global_position, mark)
+					sleepingSkillButton.button_pressed = true
+					explosionSfx.play()
+				else:
+					dict[cmd].death()
 				Global.points += cmd.length()
 				break
 

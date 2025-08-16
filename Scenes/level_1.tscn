@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ct0jsie786wrj"]
+[gd_scene load_steps=12 format=3 uid="uid://ct0jsie786wrj"]
 
 [ext_resource type="Script" uid="uid://unx1u5v87s0j" path="res://Scripts/level_1.gd" id="1_vk57k"]
 [ext_resource type="Script" uid="uid://f67xt7mqsag2" path="res://Scripts/label.gd" id="3_7p6j4"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://m67cvinwnvq2" path="res://Scenes/skill_info.tscn" id="4_7p6j4"]
 [ext_resource type="Texture2D" uid="uid://bb0yi55mmplgt" path="res://Sprites/heart.png" id="5_6444e"]
 [ext_resource type="AudioStream" uid="uid://cglf68r18tkh0" path="res://Sounds/explosion.mp3" id="6_evi0p"]
+[ext_resource type="Resource" uid="uid://dk3ivl136oob6" path="res://Resources/Skills/explosion_skill_button.tres" id="6_lsmp6"]
+[ext_resource type="Resource" uid="uid://c13x5qrx7ti0q" path="res://Resources/Skills/sleeping_skill_button.tres" id="7_xrdnt"]
 
 [sub_resource type="Curve2D" id="Curve2D_6444e"]
 _data = {
@@ -141,10 +143,10 @@ script = ExtResource("3_xfk5q")
 [node name="GUI" type="Node2D" parent="."]
 
 [node name="IntensityLabel" type="Label" parent="GUI"]
-offset_left = 1123.0
-offset_top = -3.0
-offset_right = 1875.0
-offset_bottom = 154.0
+offset_left = 1351.0
+offset_top = 189.0
+offset_right = 1888.0
+offset_bottom = 346.0
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 80
 text = "Intensity: 0"
@@ -153,31 +155,54 @@ vertical_alignment = 1
 script = ExtResource("3_7p6j4")
 
 [node name="PointsLabel" type="Label" parent="GUI"]
-offset_left = 1403.0
-offset_top = 137.0
-offset_right = 1875.0
-offset_bottom = 274.0
-theme_override_font_sizes/font_size = 80
-text = "EXP: 0"
+offset_left = 1414.0
+offset_top = 32.0
+offset_right = 1886.0
+offset_bottom = 118.0
+theme_override_font_sizes/font_size = 50
+text = "New skill point in: 0"
+horizontal_alignment = 2
+
+[node name="UpgradesLabel" type="Label" parent="GUI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1460.0
+offset_top = 116.0
+offset_right = 1887.0
+offset_bottom = 211.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 50
+text = "Upgrade points: 0"
 horizontal_alignment = 2
 
 [node name="HealthIcon" type="Sprite2D" parent="GUI"]
-position = Vector2(17, 781)
+position = Vector2(49, 934)
 scale = Vector2(0.5, 0.507)
 texture = ExtResource("5_6444e")
 centered = false
 
 [node name="HealthLabel" type="Label" parent="GUI"]
-offset_left = 152.0
-offset_top = 778.0
-offset_right = 266.0
-offset_bottom = 915.0
+offset_left = 196.0
+offset_top = 930.0
+offset_right = 310.0
+offset_bottom = 1067.0
 theme_override_font_sizes/font_size = 100
 text = "20"
 
 [node name="ExplosionSkill" parent="GUI" instance=ExtResource("4_7p6j4")]
-offset_top = 930.0
-offset_bottom = 1080.0
+offset_left = 26.0
+offset_top = 484.0
+offset_right = 176.0
+offset_bottom = 634.0
+stats = ExtResource("6_lsmp6")
+
+[node name="SleepingSkill" parent="GUI" instance=ExtResource("4_7p6j4")]
+offset_left = 187.0
+offset_top = 656.0
+offset_right = 339.0
+offset_bottom = 806.0
+stats = ExtResource("7_xrdnt")
 
 [node name="SFX" type="Node2D" parent="."]
 

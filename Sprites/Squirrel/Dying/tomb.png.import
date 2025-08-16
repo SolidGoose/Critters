@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biiedkvjx3fye"
-path="res://.godot/imported/2.png-a28e392a60ab1642f57c8b8f19fda42d.ctex"
+uid="uid://besfl7f7kkokk"
+path="res://.godot/imported/tomb.png-166a0df7c62225955451b41dca839991.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Rat/2.png"
-dest_files=["res://.godot/imported/2.png-a28e392a60ab1642f57c8b8f19fda42d.ctex"]
+source_file="res://Sprites/Squirrel/Dying/tomb.png"
+dest_files=["res://.godot/imported/tomb.png-166a0df7c62225955451b41dca839991.ctex"]
 
 [params]
 

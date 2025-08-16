@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq4okiij4q0ty"
-path="res://.godot/imported/1.png-4002d4287d11cbf598dacfb13819720d.ctex"
+uid="uid://ccggm2gmx0qcp"
+path="res://.godot/imported/r_sleep2.png-a6e084bc3f97428831f97f927ee29719.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Rat/1.png"
-dest_files=["res://.godot/imported/1.png-4002d4287d11cbf598dacfb13819720d.ctex"]
+source_file="res://Sprites/Rat/Sleeping/r_sleep2.png"
+dest_files=["res://.godot/imported/r_sleep2.png-a6e084bc3f97428831f97f927ee29719.ctex"]
 
 [params]
 

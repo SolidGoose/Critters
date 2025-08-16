@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1oipvfw8win1"
-path="res://.godot/imported/s3.png-cdfd62d7ce37a52478bbd746cf4acf42.ctex"
+uid="uid://b8ku7n33ahi8u"
+path="res://.godot/imported/r_sleep4.png-1ac57e767191155e85906fd80857566c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Squirrel/s3.png"
-dest_files=["res://.godot/imported/s3.png-cdfd62d7ce37a52478bbd746cf4acf42.ctex"]
+source_file="res://Sprites/Rat/Sleeping/r_sleep4.png"
+dest_files=["res://.godot/imported/r_sleep4.png-1ac57e767191155e85906fd80857566c.ctex"]
 
 [params]
 

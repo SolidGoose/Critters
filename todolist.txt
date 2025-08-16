@@ -1,16 +1,11 @@
-- Add different enemy types using custom resources
-- Create spawning system supporting waves
-- Add several more tracks close to the exisitng ones,
-  to diverse enemies running pattern
-- Create perks and use them between waves (also think of a way to display bought perks)
+- Create more perks. Open them depending on the level or exp
+- Create several levels using different enemy types and skills
+- Game saving system
 - Add main menu
-- Add lifes and Game over
+- Support game over
+- Add spit ability to mouse
 
 Extra mile
 
-- Think of the boss levels
-	- Add second console (or more)
-- More enemies
-- Level menu
-- Game saves
-- Perk combos
+- Upgrade menu
+

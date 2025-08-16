@@ -1,42 +1,55 @@
 [gd_resource type="Resource" script_class="EnemyStats" load_steps=11 format=3 uid="uid://wjgq7g7wblih"]
 
 [ext_resource type="Script" uid="uid://dfqgxkslxs6g4" path="res://Scripts/enemy_stats.gd" id="1_uvygt"]
-[ext_resource type="Texture2D" uid="uid://cosb1kwtcmvju" path="res://Sprites/Squirrel/s2.png" id="3_ae54q"]
-[ext_resource type="Texture2D" uid="uid://b1oipvfw8win1" path="res://Sprites/Squirrel/s3.png" id="4_52gw4"]
-[ext_resource type="Texture2D" uid="uid://duqcgmobyec57" path="res://Sprites/Squirrel/s4.png" id="5_j6ld3"]
-[ext_resource type="Texture2D" uid="uid://cxuuubsddc1uf" path="res://Sprites/Squirrel/s5.png" id="6_m850f"]
-[ext_resource type="Texture2D" uid="uid://dgj08pstcgxlc" path="res://Sprites/Squirrel/s6.png" id="7_mbh14"]
-[ext_resource type="Texture2D" uid="uid://dytkx5icvxev3" path="res://Sprites/Squirrel/s7.png" id="8_4kas2"]
-[ext_resource type="Texture2D" uid="uid://d0sjk2xyubsac" path="res://Sprites/Squirrel/s8.png" id="9_ciojw"]
-[ext_resource type="Texture2D" uid="uid://cdnnabjcr618b" path="res://Sprites/Squirrel/s9.png" id="10_r3w25"]
+[ext_resource type="Texture2D" uid="uid://besfl7f7kkokk" path="res://Sprites/Squirrel/Dying/tomb.png" id="2_1dcc5"]
+[ext_resource type="Texture2D" uid="uid://cosb1kwtcmvju" path="res://Sprites/Squirrel/Walking/s2.png" id="2_ceptt"]
+[ext_resource type="Texture2D" uid="uid://b1oipvfw8win1" path="res://Sprites/Squirrel/Walking/s3.png" id="3_1dcc5"]
+[ext_resource type="Texture2D" uid="uid://duqcgmobyec57" path="res://Sprites/Squirrel/Walking/s4.png" id="4_l1mx0"]
+[ext_resource type="Texture2D" uid="uid://cxuuubsddc1uf" path="res://Sprites/Squirrel/Walking/s5.png" id="5_phnpu"]
+[ext_resource type="Texture2D" uid="uid://dgj08pstcgxlc" path="res://Sprites/Squirrel/Walking/s6.png" id="6_ae54q"]
+[ext_resource type="Texture2D" uid="uid://dytkx5icvxev3" path="res://Sprites/Squirrel/Walking/s7.png" id="7_52gw4"]
+[ext_resource type="Texture2D" uid="uid://d0sjk2xyubsac" path="res://Sprites/Squirrel/Walking/s8.png" id="8_j6ld3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mdpuu"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_ae54q")
+"texture": ExtResource("2_1dcc5")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ceptt")
+}],
+"loop": true,
+"name": &"sleep",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ceptt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_52gw4")
+"texture": ExtResource("3_1dcc5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_j6ld3")
+"texture": ExtResource("4_l1mx0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_m850f")
+"texture": ExtResource("5_phnpu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_mbh14")
+"texture": ExtResource("6_ae54q")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_4kas2")
+"texture": ExtResource("7_52gw4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_ciojw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_r3w25")
+"texture": ExtResource("8_j6ld3")
 }],
 "loop": true,
 "name": &"walk",

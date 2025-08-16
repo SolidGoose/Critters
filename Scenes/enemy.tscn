@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cniii0gjjpm12" path="res://Scripts/enemy.gd" id="1_hghv2"]
 [ext_resource type="Script" uid="uid://cuufv5wa55yj" path="res://Scripts/word.gd" id="2_1f0kj"]
-[ext_resource type="Texture2D" uid="uid://bq4okiij4q0ty" path="res://Sprites/Rat/1.png" id="2_287tu"]
+[ext_resource type="Texture2D" uid="uid://bq4okiij4q0ty" path="res://Sprites/Rat/Walking/1.png" id="2_287tu"]
 [ext_resource type="FontFile" uid="uid://cxqfdj3wib38x" path="res://Fonts/Carlito-Regular.ttf" id="3_287tu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hgeoe"]
@@ -70,3 +70,10 @@ text = "SAMPLE TEXT"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_1f0kj")
+
+[node name="ConfusionDuration" type="Timer" parent="."]
+one_shot = true
+
+[node name="DeathDuration" type="Timer" parent="."]
+
+[connection signal="timeout" from="ConfusionDuration" to="." method="_on_confusion_duration_timeout"]

@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=3 uid="uid://m67cvinwnvq2"]
+[gd_scene load_steps=4 format=3 uid="uid://m67cvinwnvq2"]
 
-[ext_resource type="Texture2D" uid="uid://c43214gj46v14" path="res://icon.svg" id="1_scx5p"]
 [ext_resource type="Script" uid="uid://daw0nvtu376tc" path="res://Scripts/skill_info.gd" id="2_b3n16"]
 
 [sub_resource type="Gradient" id="Gradient_wol2e"]
@@ -10,18 +9,25 @@ colors = PackedColorArray(0, 0, 0, 0.768627, 0, 0, 0, 0.768627)
 gradient = SubResource("Gradient_wol2e")
 width = 150
 
-[node name="SkillInfo" type="TextureButton"]
+[node name="SkillPanel" type="Panel"]
+offset_right = 152.0
+offset_bottom = 150.0
+script = ExtResource("2_b3n16")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="SkillButton" type="TextureButton" parent="."]
 clip_children = 2
 offset_right = 150.0
 offset_bottom = 150.0
 toggle_mode = true
 action_mode = 0
 button_mask = 0
-texture_normal = ExtResource("1_scx5p")
 stretch_mode = 3
-script = ExtResource("2_b3n16")
 
-[node name="Cooldown" type="TextureProgressBar" parent="."]
+[node name="Cooldown" type="TextureProgressBar" parent="SkillButton"]
 layout_mode = 0
 offset_right = 150.0
 offset_bottom = 150.0
@@ -30,49 +36,54 @@ fill_mode = 5
 nine_patch_stretch = true
 texture_progress = SubResource("GradientTexture1D_gof0x")
 
-[node name="Key" type="Label" parent="."]
+[node name="TimePanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 103.0
+offset_right = 152.0
+offset_bottom = 150.0
+
+[node name="Time" type="Label" parent="TimePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.532
+anchor_right = 0.544
+anchor_bottom = 0.532
+offset_left = -39.0
+offset_top = -21.004
+offset_right = 35.04
+offset_bottom = 20.996
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "10.0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="KeyPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 88.0
+offset_right = 49.0
+offset_bottom = 150.0
+
+[node name="Key" type="Label" parent="KeyPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -54.0
-offset_right = -14.0
-offset_bottom = 69.0
+offset_left = -7.5
+offset_top = -36.0
+offset_right = 22.5
+offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "!"
 
-[node name="Time" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 11.0
-offset_top = 24.0
-offset_right = 59.0
-offset_bottom = 66.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "0.0"
-horizontal_alignment = 2
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-
-[node name="Panel" type="Panel" parent="."]
-show_behind_parent = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[connection signal="toggled" from="." to="." method="_on_toggled"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="toggled" from="SkillButton" to="." method="_on_skill_button_toggled"]

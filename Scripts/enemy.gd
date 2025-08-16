@@ -8,7 +8,9 @@ var isRunningAway: bool = false
 var spritePosition: Vector2
 
 @onready var sprite: AnimatedSprite2D = $HitboxArea/Sprite
-# @onready var word: Label = $Word
+@onready var confusionTimer: Timer = $ConfusionDuration
+@onready var word: Label = $Word
+@onready var hitboxShape: CollisionShape2D = $HitboxArea/HitboxShape
 
 
 func _ready() -> void:
@@ -44,4 +46,32 @@ func _process(delta: float) -> void:
 
 func death() -> void:
 	print("Enemy died")
+	hitboxShape.disabled = true
+	set_process(false)
+	word.queue_free()
+	sprite.play("dead")
+	var deathAnimtionTween = create_tween()
+	deathAnimtionTween\
+		.tween_property(sprite, "position", Vector2(0, -50), 0.2)\
+		.set_trans(Tween.TRANS_SINE)
+	deathAnimtionTween\
+		.tween_property(sprite, "position", Vector2(0, 50), 0.2)\
+		.set_trans(Tween.TRANS_SINE)
+	deathAnimtionTween\
+		.tween_property(sprite, "modulate", Color(1,1,1,0), 1)\
+		.set_trans(Tween.TRANS_EXPO)
+	await deathAnimtionTween.finished
 	queue_free()
+
+
+func sleep() -> void:
+	confusionTimer.wait_time = Global.sleepingDuration
+	confusionTimer.start()
+	if sprite.animation != "sleep":
+		sprite.play("sleep")
+	set_process(false)
+
+
+func _on_confusion_duration_timeout() -> void:
+	sprite.play("walk")
+	set_process(true)

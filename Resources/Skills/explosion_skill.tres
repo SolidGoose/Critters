@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="ExplosionSkill" load_steps=2 format=3 uid="uid://d3wfyuhjmquyj"]
+[gd_resource type="Resource" script_class="SkillStats" load_steps=2 format=3 uid="uid://dq3iwencmj7f3"]
 
-[ext_resource type="Script" uid="uid://dqadbgt8fm7vd" path="res://Scripts/explostion_skill.gd" id="1_7ij50"]
+[ext_resource type="Script" uid="uid://bqfhbtbxjttwp" path="res://Scripts/skill_stats.gd" id="1_7ij50"]
 
 [resource]
 script = ExtResource("1_7ij50")
 name = "explosion"
 duration = 3
-radius = 200
+radius = 2000
+metadata/_custom_type_script = "uid://bqfhbtbxjttwp"

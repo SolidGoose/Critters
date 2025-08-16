@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SkillStats" load_steps=2 format=3 uid="uid://ct5v402p0ab43"]
+
+[ext_resource type="Script" uid="uid://bqfhbtbxjttwp" path="res://Scripts/skill_stats.gd" id="1_2dsci"]
+
+[resource]
+script = ExtResource("1_2dsci")
+name = "sleeping"
+duration = 180
+radius = 200
+metadata/_custom_type_script = "uid://bqfhbtbxjttwp"

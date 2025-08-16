@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvjpjc5bly3oy"
-path="res://.godot/imported/s1.png-c79e167a65479ed771029c1e90f892d7.ctex"
+uid="uid://biiedkvjx3fye"
+path="res://.godot/imported/2.png-4dbc43467628737dbd86e9d2fab13873.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Squirrel/s1.png"
-dest_files=["res://.godot/imported/s1.png-c79e167a65479ed771029c1e90f892d7.ctex"]
+source_file="res://Sprites/Rat/Walking/2.png"
+dest_files=["res://.godot/imported/2.png-4dbc43467628737dbd86e9d2fab13873.ctex"]
 
 [params]
 

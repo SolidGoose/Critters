@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxuuubsddc1uf"
-path="res://.godot/imported/s5.png-a82e2b2e020ea658987f63db98476a75.ctex"
+uid="uid://bjb5emhopf50c"
+path="res://.godot/imported/m_sleep6.png-f0214fa0f6fa916113c57b7fc614da18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Squirrel/s5.png"
-dest_files=["res://.godot/imported/s5.png-a82e2b2e020ea658987f63db98476a75.ctex"]
+source_file="res://Sprites/Mouse/Sleeping/m_sleep6.png"
+dest_files=["res://.godot/imported/m_sleep6.png-f0214fa0f6fa916113c57b7fc614da18.ctex"]
 
 [params]
 

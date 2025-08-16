@@ -1,12 +1,58 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=5 format=3 uid="uid://ctk2tti13tbm2"]
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=14 format=3 uid="uid://ctk2tti13tbm2"]
 
 [ext_resource type="Script" uid="uid://dfqgxkslxs6g4" path="res://Scripts/enemy_stats.gd" id="1_ffro8"]
+[ext_resource type="Texture2D" uid="uid://bbpo04g3abapa" path="res://Sprites/Mouse/Sleeping/m_sleep1.png" id="2_2qfjl"]
+[ext_resource type="Texture2D" uid="uid://bglyr831fgcsu" path="res://Sprites/Mouse/Dying/tomb.png" id="2_egdex"]
 [ext_resource type="Texture2D" uid="uid://bmuu07fmcsbix" path="res://Sprites/Mouse/Walking/1.png" id="2_qv3le"]
 [ext_resource type="Texture2D" uid="uid://264pwbx1e4mu" path="res://Sprites/Mouse/Walking/2.png" id="3_0n4pu"]
+[ext_resource type="Texture2D" uid="uid://y64tp74qel0r" path="res://Sprites/Mouse/Sleeping/m_sleep2.png" id="3_egdex"]
+[ext_resource type="Texture2D" uid="uid://c6r85dh5ik40l" path="res://Sprites/Mouse/Sleeping/m_sleep3.png" id="4_3egpi"]
+[ext_resource type="Texture2D" uid="uid://bm0ofeqtmadoj" path="res://Sprites/Mouse/Sleeping/m_sleep4.png" id="5_qsqd6"]
+[ext_resource type="Texture2D" uid="uid://j6cfyb23h3qy" path="res://Sprites/Mouse/Sleeping/m_sleep5.png" id="6_10o7y"]
+[ext_resource type="Texture2D" uid="uid://bjb5emhopf50c" path="res://Sprites/Mouse/Sleeping/m_sleep6.png" id="7_gb270"]
+[ext_resource type="Texture2D" uid="uid://w8mrmy443mdg" path="res://Sprites/Mouse/Sleeping/m_sleep7.png" id="8_hd7th"]
+[ext_resource type="Texture2D" uid="uid://dhme1lfm2vw06" path="res://Sprites/Mouse/Sleeping/m_sleep8.png" id="9_e60yk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qv3le"]
 resource_local_to_scene = true
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_egdex")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2qfjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_egdex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3egpi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qsqd6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_10o7y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gb270")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hd7th")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_e60yk")
+}],
+"loop": true,
+"name": &"sleep",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_qv3le")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgj08pstcgxlc"
-path="res://.godot/imported/s6.png-d5d4e815670ef76d5ac6dd116d9b78da.ctex"
+uid="uid://c1cvg2tgstxcq"
+path="res://.godot/imported/cloud.png-f8c227979852edeaf9c5c33caa7e7e1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Squirrel/s6.png"
-dest_files=["res://.godot/imported/s6.png-d5d4e815670ef76d5ac6dd116d9b78da.ctex"]
+source_file="res://Sprites/cloud.png"
+dest_files=["res://.godot/imported/cloud.png-f8c227979852edeaf9c5c33caa7e7e1f.ctex"]
 
 [params]
 
