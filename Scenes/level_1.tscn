@@ -1,25 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://ct0jsie786wrj"]
+[gd_scene load_steps=10 format=3 uid="uid://ct0jsie786wrj"]
 
 [ext_resource type="Script" uid="uid://unx1u5v87s0j" path="res://Scripts/level_1.gd" id="1_vk57k"]
 [ext_resource type="Script" uid="uid://f67xt7mqsag2" path="res://Scripts/label.gd" id="3_7p6j4"]
 [ext_resource type="Script" uid="uid://b1lyb0drxtjf" path="res://Scripts/console_line.gd" id="3_xfk5q"]
 [ext_resource type="PackedScene" uid="uid://m67cvinwnvq2" path="res://Scenes/skill_info.tscn" id="4_7p6j4"]
+[ext_resource type="Texture2D" uid="uid://bb0yi55mmplgt" path="res://Sprites/heart.png" id="5_6444e"]
+[ext_resource type="AudioStream" uid="uid://cglf68r18tkh0" path="res://Sounds/explosion.mp3" id="6_evi0p"]
 
 [sub_resource type="Curve2D" id="Curve2D_6444e"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 853, 0, 0, 0, 0, 0, 1050.62, 222.25, 0, 0, 0, 0, 1707, 960)
+"points": PackedVector2Array(0, 0, 0, 0, 653, -200, 0, 0, 0, 0, 1707, 960)
 }
-point_count = 3
+point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_7p6j4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 427, 0, 0, 0, 0, 0, 1281, 960)
+"points": PackedVector2Array(0, 0, 0, 0, 227, -200, 0, 0, 0, 0, 1281, 960)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_xfk5q"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 855, 960)
+"points": PackedVector2Array(0, 0, 0, 0, -199, -200, 0, 0, 0, 0, 855, 960)
 }
 point_count = 2
 
@@ -136,18 +138,52 @@ caret_blink = true
 caret_force_displayed = true
 script = ExtResource("3_xfk5q")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 1744.0
-offset_top = 15.0
-offset_right = 1887.0
-offset_bottom = 172.0
-theme_override_font_sizes/font_size = 100
-text = "sd"
+[node name="GUI" type="Node2D" parent="."]
+
+[node name="IntensityLabel" type="Label" parent="GUI"]
+offset_left = 1123.0
+offset_top = -3.0
+offset_right = 1875.0
+offset_bottom = 154.0
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 80
+text = "Intensity: 0"
+horizontal_alignment = 2
+vertical_alignment = 1
 script = ExtResource("3_7p6j4")
 
-[node name="ExplosionSkill" parent="." instance=ExtResource("4_7p6j4")]
+[node name="PointsLabel" type="Label" parent="GUI"]
+offset_left = 1403.0
+offset_top = 137.0
+offset_right = 1875.0
+offset_bottom = 274.0
+theme_override_font_sizes/font_size = 80
+text = "EXP: 0"
+horizontal_alignment = 2
+
+[node name="HealthIcon" type="Sprite2D" parent="GUI"]
+position = Vector2(17, 781)
+scale = Vector2(0.5, 0.507)
+texture = ExtResource("5_6444e")
+centered = false
+
+[node name="HealthLabel" type="Label" parent="GUI"]
+offset_left = 152.0
+offset_top = 778.0
+offset_right = 266.0
+offset_bottom = 915.0
+theme_override_font_sizes/font_size = 100
+text = "20"
+
+[node name="ExplosionSkill" parent="GUI" instance=ExtResource("4_7p6j4")]
 offset_top = 930.0
 offset_bottom = 1080.0
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="Explosion" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("6_evi0p")
+volume_db = 7.354
 
 [connection signal="timeout" from="SpawnCooldown" to="." method="_on_spawn_cooldown_timeout"]
 [connection signal="timeout" from="Clock" to="." method="_on_clock_timeout"]

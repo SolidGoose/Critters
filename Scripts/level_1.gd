@@ -1,6 +1,5 @@
 extends Node2D
 
-
 const SPAWN_COOLDOWN: float = 3.0
 var spawnCoodrinates: Array[int] = [55, 375, 695]
 var spawnY: int = -100
@@ -8,14 +7,19 @@ var zIndex: int = -100
 var time: float = 0.0
 @onready var console: LineEdit = $ConsoleLine
 @onready var spawnCooldown: Timer = $SpawnCooldown
-@onready var explosionSkill: TextureButton = $ExplosionSkill
+@onready var explosionSkill: TextureButton = $GUI/ExplosionSkill
+@onready var healthLabel: Label = $GUI/HealthLabel
+@onready var pointsLabel: Label = $GUI/PointsLabel
+@onready var explosionSfx: AudioStreamPlayer2D = $SFX/Explosion
 
 var enemyScene = preload("res://Scenes/enemy.tscn")
 var blastScene = preload("res://Scenes/blast_area.tscn")
 var enemyStats = [
-	preload("res://Resources/enemy_squirrel.tres"),
-	preload("res://Resources/enemy_mouse.tres"),
+	preload("res://Resources/Enemies/enemy_squirrel.tres"),
+	preload("res://Resources/Enemies/enemy_mouse.tres"),
+	preload("res://Resources/Enemies/enemy_rat.tres"),
 ]
+var explosionSkillStats = preload("res://Resources/Skills/explosion_skill.tres")
 
 
 func _ready() -> void:
@@ -24,8 +28,17 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	time += 0.016
-	var s = 1.5
+	var s: float = 1.5
 	spawnCooldown.wait_time = s*cos(0.2*time + PI) + 2.2
+
+	healthLabel.text = str(Global.health)
+	pointsLabel.text = str("EXP: ", Global.points)
+	if Global.health <= 0:
+		console.text = "You lost! Press F5 to restart."
+		console.editable = false
+		spawnCooldown.stop()
+		set_process(false)
+		return
 
 
 func get_word_dict_from_node(node: Node) -> Dictionary:
@@ -36,9 +49,22 @@ func get_word_dict_from_node(node: Node) -> Dictionary:
 		return {}
 
 
+func pick_random_enemy() -> EnemyStats:
+	var squirrelSpawnChance: int = 50
+	var mouseSpawnChance: int = 15
+	# var ratSpawnChance: int = 20
+	var chance = randi_range(0, 100)
+	if chance < 100 - squirrelSpawnChance:
+		return enemyStats[0]  # Squirrel
+	elif chance < 100 - mouseSpawnChance:
+		return enemyStats[1]  # Mouse
+	else:
+		return enemyStats[2]  # Rat
+
+
 func _on_spawn_cooldown_timeout() -> void:
 	var enemy = enemyScene.instantiate()
-	enemy.stats = enemyStats.pick_random()
+	enemy.stats = pick_random_enemy()
 
 	var tracks = get_node('Tracks').get_children()
 	var track = tracks.pick_random()
@@ -52,6 +78,7 @@ func _on_spawn_cooldown_timeout() -> void:
 
 func create_blast_area(spawnPosition: Vector2) -> void:
 	var blast = blastScene.instantiate()
+	blast.stats = explosionSkillStats
 	blast.global_position = spawnPosition
 	add_child(blast)
 
@@ -129,7 +156,9 @@ func _on_console_line_text_submitted(new_text: String) -> void:
 				if not explosionSkill.button_pressed and sign == "!":
 					create_blast_area(dict[cmd].global_position)
 					explosionSkill.button_pressed = true
+					explosionSfx.play()
 				dict[cmd].death()
+				Global.points += cmd.length()
 				break
 
 	console.clear()

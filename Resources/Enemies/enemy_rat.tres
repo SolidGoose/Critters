@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=5 format=3 uid="uid://ff3bl4hj2sj5"]
+
+[ext_resource type="Script" uid="uid://dfqgxkslxs6g4" path="res://Scripts/enemy_stats.gd" id="1_2rvlw"]
+[ext_resource type="Texture2D" uid="uid://bq4okiij4q0ty" path="res://Sprites/Rat/1.png" id="2_ce4og"]
+[ext_resource type="Texture2D" uid="uid://biiedkvjx3fye" path="res://Sprites/Rat/2.png" id="3_y4iys"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2rvlw"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ce4og")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y4iys")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_2rvlw")
+name = "rat"
+scale = Vector2(0.6, 0.6)
+speed = 0.2
+speedButtomError = 0.025
+speedTopError = 0.03
+spriteFrames = SubResource("SpriteFrames_2rvlw")
+spriteOffset = Vector2(-20, 0)
+metadata/_custom_type_script = "uid://dfqgxkslxs6g4"

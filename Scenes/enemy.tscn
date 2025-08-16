@@ -1,15 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://crq547s6cp4yg"]
+[gd_scene load_steps=8 format=3 uid="uid://crq547s6cp4yg"]
 
 [ext_resource type="Script" uid="uid://cniii0gjjpm12" path="res://Scripts/enemy.gd" id="1_hghv2"]
 [ext_resource type="Script" uid="uid://cuufv5wa55yj" path="res://Scripts/word.gd" id="2_1f0kj"]
-[ext_resource type="Resource" uid="uid://wjgq7g7wblih" path="res://Resources/enemy_squirrel.tres" id="2_287tu"]
-[ext_resource type="Texture2D" uid="uid://c6ohi0spg2wso" path="res://Sprites/squirrel.png" id="2_afpow"]
+[ext_resource type="Texture2D" uid="uid://bq4okiij4q0ty" path="res://Sprites/Rat/1.png" id="2_287tu"]
+[ext_resource type="FontFile" uid="uid://cxqfdj3wib38x" path="res://Fonts/Carlito-Regular.ttf" id="3_287tu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hgeoe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_287tu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_afpow"]
 radius = 50.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hghv2"]
-bg_color = Color(0.41024, 0.41024, 0.41024, 1)
+bg_color = Color(0.415686, 0.415686, 0.415686, 0.721569)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
@@ -22,17 +38,18 @@ y_sort_enabled = true
 rotates = false
 loop = false
 script = ExtResource("1_hghv2")
-stats = ExtResource("2_287tu")
 
 [node name="HitboxArea" type="Area2D" parent="." groups=["EnemyArea"]]
 y_sort_enabled = true
 
-[node name="Sprite" type="Sprite2D" parent="HitboxArea"]
+[node name="Sprite" type="AnimatedSprite2D" parent="HitboxArea"]
 y_sort_enabled = true
-position = Vector2(-75, -86)
-texture = ExtResource("2_afpow")
+sprite_frames = SubResource("SpriteFrames_hgeoe")
+frame_progress = 0.557522
+offset = Vector2(-20, 0)
 
 [node name="HitboxShape" type="CollisionShape2D" parent="HitboxArea"]
+y_sort_enabled = true
 shape = SubResource("CircleShape2D_afpow")
 
 [node name="Word" type="Label" parent="."]
@@ -41,11 +58,12 @@ y_sort_enabled = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -160.5
-offset_top = -180.0
-offset_right = 160.5
-offset_bottom = -111.0
+offset_left = -139.0
+offset_top = -188.0
+offset_right = 182.0
+offset_bottom = -119.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_287tu")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_hghv2")
 text = "SAMPLE TEXT"

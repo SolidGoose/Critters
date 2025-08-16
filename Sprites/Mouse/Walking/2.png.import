@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6ohi0spg2wso"
-path="res://.godot/imported/squirrel.png-ed7e58ddd65d63cb234ecbfe16489c14.ctex"
+uid="uid://264pwbx1e4mu"
+path="res://.godot/imported/2.png-f54f3ff702f4d87860baf6f86cf010c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/squirrel.png"
-dest_files=["res://.godot/imported/squirrel.png-ed7e58ddd65d63cb234ecbfe16489c14.ctex"]
+source_file="res://Sprites/Mouse/Walking/2.png"
+dest_files=["res://.godot/imported/2.png-f54f3ff702f4d87860baf6f86cf010c1.ctex"]
 
 [params]
 

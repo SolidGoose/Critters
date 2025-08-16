@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=5 format=3 uid="uid://ctk2tti13tbm2"]
+
+[ext_resource type="Script" uid="uid://dfqgxkslxs6g4" path="res://Scripts/enemy_stats.gd" id="1_ffro8"]
+[ext_resource type="Texture2D" uid="uid://bmuu07fmcsbix" path="res://Sprites/Mouse/Walking/1.png" id="2_qv3le"]
+[ext_resource type="Texture2D" uid="uid://264pwbx1e4mu" path="res://Sprites/Mouse/Walking/2.png" id="3_0n4pu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qv3le"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qv3le")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0n4pu")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_ffro8")
+name = "mouse"
+scale = Vector2(1, 1)
+speed = 0.08
+speedButtomError = 0.01
+speedTopError = 0.01
+spriteFrames = SubResource("SpriteFrames_qv3le")
+spriteOffset = Vector2(-20, -20)
+metadata/_custom_type_script = "uid://dfqgxkslxs6g4"
