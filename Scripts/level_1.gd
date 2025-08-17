@@ -90,7 +90,6 @@ func create_blast_area(spawnPosition: Vector2, mark: String) -> void:
 	blast.global_position = spawnPosition
 	add_child(blast)
 
-
 func _on_console_line_text_submitted(new_text: String) -> void:
 	var enemyNodes: Array[Node] = get_tree().get_nodes_in_group('EnemyPathFollow')
 	enemyNodes.sort_custom(func (a, b):
@@ -143,3 +142,60 @@ func _on_console_line_text_submitted(new_text: String) -> void:
 
 
 	console.clear()
+
+
+func _on_console_line_text_changed(new_text: String) -> void:
+	var enemyNodes: Array[Node] = get_tree().get_nodes_in_group('EnemyPathFollow')
+	enemyNodes.sort_custom(func (a, b):
+		var progressA
+		var progressB
+		var offsetA = 1 - a.progress_ratio
+		var offsetB = 1 - b.progress_ratio
+		if a.isRunningAway:
+			progressA = a.progress_ratio + offsetA
+		else:
+			progressA = a.progress_ratio
+		if b.isRunningAway:
+			progressB = b.progress_ratio + offsetB
+		else:
+			progressB = b.progress_ratio
+
+		return float(a.isRunningAway) + progressA >\
+			   float(b.isRunningAway) + progressB)
+	
+	var parsedCommand: Dictionary = Utils.parse_console_command(new_text)	
+	var cmds = parsedCommand['cmds']
+	var mark = parsedCommand['mark']
+	
+	var console_text_color: Color = Color.WHITE
+	console.remove_theme_color_override("font_outline_color")
+	console.add_theme_constant_override("outline_size", 0)
+	
+	if cmds == []:
+		console_text_color = Color.WHITE	
+	else:		
+		# Build list of enemy words
+		var enemy_words: Array[String] = []
+		for enemy in enemyNodes:
+			var word: Label = enemy.get_node_or_null('Word')
+			if word != null:
+				enemy_words.append(word.text)
+		
+		var word_error = false
+		for cmd in cmds:
+			if not cmd in enemy_words:
+				word_error = true
+	
+		if not word_error:
+			if mark == '':
+				console_text_color = Color.LIGHT_GREEN
+			if mark == '!' and (not explosionSkillButton.button_pressed):
+				console_text_color = Color.RED
+			if mark == '?' and (not sleepingSkillButton.button_pressed):
+				console_text_color = Color.VIOLET
+			if cmds.size() > 1 and (not chainSkillButton.button_pressed):
+				console.add_theme_color_override('font_outline_color', Color.BLACK)
+				console.add_theme_constant_override("outline_size", 20)
+	
+	console.add_theme_color_override("font_color", console_text_color)
+	
