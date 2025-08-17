@@ -16,7 +16,6 @@ func _ready() -> void:
 	key.text = stats.key
 	button.texture_normal = stats.texture
 	time.visible = false
-	# time.text = "Ready!"
 
 	cooldown.max_value = timer.wait_time
 	set_process(false)
@@ -35,7 +34,6 @@ func _on_skill_button_toggled(toggled_on:bool) -> void:
 		set_process(true)
 	else:
 		time.visible = false
-		# time.text = "Ready!"
 
 
 func _on_timer_timeout() -> void:

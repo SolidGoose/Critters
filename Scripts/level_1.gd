@@ -37,6 +37,7 @@ var enemyStats = [
 ]
 var explosionSkillStats = preload("res://Resources/Skills/explosion_skill.tres")
 var sleepingSkillStats = preload("res://Resources/Skills/sleeping_skill.tres")
+var s: float = 1.5
 
 
 func _ready() -> void:
@@ -49,8 +50,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	time += 0.016
-	var s: float = 1.5
-	spawnCooldown.wait_time = s*cos(0.2*time + PI) + 2.2
+	spawnCooldown.wait_time = s*cos(0.2*time + PI) + 1 + s
 
 	healthLabel.text = str(Global.health)
 	pointsLabel.text = str("EXP: ", Global.points)
