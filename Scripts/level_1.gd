@@ -193,7 +193,7 @@ func _on_console_line_text_changed(new_text: String) -> void:
 			if mark == '?' and (not sleepingSkillButton.button_pressed):
 				console_text_color = Color.VIOLET
 			if cmds.size() > 1 and (not chainSkillButton.button_pressed):
-				console.add_theme_color_override('font_outline_color', Color.BLACK)
+				console.add_theme_color_override('font_outline_color', Color.GOLDENROD)
 				console.add_theme_constant_override("outline_size", 20)
 	
 	console.add_theme_color_override("font_color", console_text_color)
