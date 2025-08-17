@@ -280,4 +280,5 @@ volume_db = 7.354
 
 [connection signal="timeout" from="SpawnCooldown" to="." method="_on_spawn_cooldown_timeout"]
 [connection signal="timeout" from="Clock" to="." method="_on_clock_timeout"]
+[connection signal="text_changed" from="Console/ConsoleLine" to="." method="_on_console_line_text_changed"]
 [connection signal="text_submitted" from="Console/ConsoleLine" to="." method="_on_console_line_text_submitted"]
