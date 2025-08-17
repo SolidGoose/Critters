@@ -22,6 +22,9 @@ var chainSkillButton: TextureButton
 @onready var consoleExplosionSfx: AudioStreamPlayer2D = $SFX/ConsoleExplosion
 @onready var consoleSleepSfx: AudioStreamPlayer2D = $SFX/ConsoleSleep
 @onready var consoleChainSfx: AudioStreamPlayer2D = $SFX/ConsoleChain
+@onready var correctWordSfx: AudioStreamPlayer2D = $SFX/CorrectWord
+@onready var wrongWordSfx: AudioStreamPlayer2D = $SFX/WrongWord
+@onready var squeakSfx: AudioStreamPlayer2D = $SFX/Squeak
 
 
 # Preloads
@@ -138,6 +141,7 @@ func _on_console_line_text_submitted(new_text: String) -> void:
 					Global.points += cmd.length()
 					enemyNodes.remove_at(i)
 					break
+
 		if enemiesKilled > 0:
 			if cmds.size() > 1:
 				chainSkillButton.button_pressed = true
@@ -147,6 +151,9 @@ func _on_console_line_text_submitted(new_text: String) -> void:
 			if not sleepingSkillButton.button_pressed and mark == "?":
 				sleepingSkillButton.button_pressed = true
 				sleepSfx.play()
+			squeakSfx.play()
+		else:
+			wrongWordSfx.play()
 
 	console.clear()
 
@@ -181,6 +188,8 @@ func _on_console_line_text_changed(new_text: String) -> void:
 	if cmds == []:
 		console_text_color = Color.WHITE	
 	else:		
+		correctWordSfx.pitch_scale = cmds.size()
+
 		# Build list of enemy words
 		var enemy_words: Array[String] = []
 		for enemy in enemyNodes:
@@ -196,6 +205,7 @@ func _on_console_line_text_changed(new_text: String) -> void:
 		if not word_error:
 			if mark == '':
 				console_text_color = Color.LIGHT_GREEN
+				correctWordSfx.play()
 			if mark == '!':
 				if (not explosionSkillButton.button_pressed):
 					console_text_color = Color.CORAL
@@ -213,6 +223,6 @@ func _on_console_line_text_changed(new_text: String) -> void:
 				console.add_theme_constant_override("outline_size", 40)
 				if mark == '':
 					consoleChainSfx.play()
+					correctWordSfx.play()
 	
 	console.add_theme_color_override("font_color", console_text_color)
-	

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5khe1bcjm7hy"
-path="res://.godot/imported/heart.png-e4c9cacde081f165402ad7c69da5bfce.ctex"
+uid="uid://hcx6j7bwigaj"
+path="res://.godot/imported/mice_chese2.png-d459ad6b95bbc96dce0ea73f68286a63.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/heart.png"
-dest_files=["res://.godot/imported/heart.png-e4c9cacde081f165402ad7c69da5bfce.ctex"]
+source_file="res://Sprites/Mouse/Running/mice_chese2.png"
+dest_files=["res://.godot/imported/mice_chese2.png-d459ad6b95bbc96dce0ea73f68286a63.ctex"]
 
 [params]
 

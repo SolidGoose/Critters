@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=14 format=3 uid="uid://ff3bl4hj2sj5"]
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=16 format=3 uid="uid://ff3bl4hj2sj5"]
 
 [ext_resource type="Script" uid="uid://dfqgxkslxs6g4" path="res://Scripts/enemy_stats.gd" id="1_2rvlw"]
 [ext_resource type="Texture2D" uid="uid://c22oi2nk4oc36" path="res://Sprites/Rat/Dying/r_ded.png" id="2_tl1ok"]
 [ext_resource type="Texture2D" uid="uid://wtqqml0gmygr" path="res://Sprites/Rat/Sleeping/r_sleep1.png" id="2_x4ryo"]
+[ext_resource type="Texture2D" uid="uid://cm5e7guk35vve" path="res://Sprites/Rat/Running/rcookie1.png" id="3_a1o4y"]
 [ext_resource type="Texture2D" uid="uid://ccggm2gmx0qcp" path="res://Sprites/Rat/Sleeping/r_sleep2.png" id="3_vjxhy"]
 [ext_resource type="Texture2D" uid="uid://c5nq0tk6i70na" path="res://Sprites/Rat/Sleeping/r_sleep3.png" id="4_dr2mj"]
+[ext_resource type="Texture2D" uid="uid://547sosqe6f66" path="res://Sprites/Rat/Running/rcookie2.png" id="4_itdje"]
 [ext_resource type="Texture2D" uid="uid://b8ku7n33ahi8u" path="res://Sprites/Rat/Sleeping/r_sleep4.png" id="5_tl1ok"]
 [ext_resource type="Texture2D" uid="uid://dxgc63ettn65" path="res://Sprites/Rat/Sleeping/r_sleep5.png" id="6_vmpsj"]
 [ext_resource type="Texture2D" uid="uid://cun0wnbqtngc7" path="res://Sprites/Rat/Sleeping/r_sleep6.png" id="7_a1o4y"]
@@ -22,6 +24,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_a1o4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_itdje")
+}],
+"loop": true,
+"name": &"run",
 "speed": 5.0
 }, {
 "frames": [{
@@ -69,7 +82,7 @@ animations = [{
 script = ExtResource("1_2rvlw")
 name = "rat"
 scale = Vector2(0.6, 0.6)
-speed = 0.2
+speed = 0.06
 speedButtomError = 0.025
 speedTopError = 0.03
 spriteFrames = SubResource("SpriteFrames_2rvlw")

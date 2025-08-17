@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbu4u4o3k1qay"
-path="res://.godot/imported/bomb.png-7059308b3197d9fc6a0ed8f99641ae03.ctex"
+uid="uid://dbxwpjpdms2ly"
+path="res://.godot/imported/belka9.png-5f12ce8c0dcce3259a47e0a7db893097.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/bomb.png"
-dest_files=["res://.godot/imported/bomb.png-7059308b3197d9fc6a0ed8f99641ae03.ctex"]
+source_file="res://Sprites/Squirrel/Running/belka9.png"
+dest_files=["res://.godot/imported/belka9.png-5f12ce8c0dcce3259a47e0a7db893097.ctex"]
 
 [params]
 

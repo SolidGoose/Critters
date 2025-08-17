@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="SkillButtonStats" load_steps=3 format=3 uid="uid://cd0gp0qwl7f1r"]
 
 [ext_resource type="Script" uid="uid://caao61ub84v8t" path="res://Scripts/skill_button_stats.gd" id="1_xohvs"]
-[ext_resource type="Texture2D" uid="uid://bbp7oosimiity" path="res://Sprites/chain.png" id="2_pwoiu"]
+[ext_resource type="Texture2D" uid="uid://b8cbskf6jiyax" path="res://Sprites/Skills/chain_with_bg.png" id="2_xohvs"]
 
 [resource]
 script = ExtResource("1_xohvs")
 name = ""
-texture = ExtResource("2_pwoiu")
+texture = ExtResource("2_xohvs")
 cooldown = 10.0
 key = ","
 metadata/_custom_type_script = "uid://caao61ub84v8t"

@@ -14,7 +14,11 @@ Credits:
 
 Explosion sound: https://freesound.org/people/bevibeldesign/
 Chimes sound: https://freesound.org/people/everythingsounds/sounds/621784/
-Chain sound: freesound.org/people/nettimato/
+Chain sound: https://freesound.org/people/nettimato/
 Lighter sound: https://freesound.org/people/SomeoneCool15/
-
-
+Loosing life sound: https://freesound.org/people/kantouth/
+Wrong input sound: https://freesound.org/people/Raclure/
+Game over sound: https://freesound.org/people/NenadSimic/
+You won sound: https://freesound.org/people/Tuudurt/
+Level up sound: https://freesound.org/people/IENBA/
+Mouse squeak: https://freesound.org/people/Breviceps/

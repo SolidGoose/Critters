@@ -37,33 +37,42 @@ fill_mode = 5
 nine_patch_stretch = true
 texture_progress = SubResource("GradientTexture1D_gof0x")
 
-[node name="TimePanel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 62.0
-offset_top = 103.0
-offset_right = 152.0
-offset_bottom = 150.0
-
-[node name="Time" type="Label" parent="TimePanel"]
+[node name="Time" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 0.532
-anchor_right = 0.544
-anchor_bottom = 0.532
-offset_left = -39.0
-offset_top = -21.004
-offset_right = 35.04
-offset_bottom = 20.996
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.02
+offset_top = -14.0
+offset_right = 37.02
+offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "10.0"
-horizontal_alignment = 2
+horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TimePanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = 13.5
+offset_right = 45.5
+offset_bottom = 60.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="KeyPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_top = 88.0
 offset_right = 49.0

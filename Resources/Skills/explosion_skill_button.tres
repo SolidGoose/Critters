@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SkillButtonStats" load_steps=3 format=3 uid="uid://dk3ivl136oob6"]
 
 [ext_resource type="Script" uid="uid://caao61ub84v8t" path="res://Scripts/skill_button_stats.gd" id="1_tdnvp"]
-[ext_resource type="Texture2D" uid="uid://cbu4u4o3k1qay" path="res://Sprites/bomb.png" id="2_28vg6"]
+[ext_resource type="Texture2D" uid="uid://din75su7kngga" path="res://Sprites/Skills/bomb_with_bg.png" id="2_28vg6"]
 
 [resource]
 script = ExtResource("1_tdnvp")

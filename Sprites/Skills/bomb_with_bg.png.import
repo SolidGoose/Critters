@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv3e4wxph41m1"
-path="res://.godot/imported/food.png-03a70cefa43c7bbb32683813fb526109.ctex"
+uid="uid://din75su7kngga"
+path="res://.godot/imported/bomb_with_bg.png-f2ae743dd538448cfd0351a569c80916.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/food.png"
-dest_files=["res://.godot/imported/food.png-03a70cefa43c7bbb32683813fb526109.ctex"]
+source_file="res://Sprites/Skills/bomb_with_bg.png"
+dest_files=["res://.godot/imported/bomb_with_bg.png-f2ae743dd538448cfd0351a569c80916.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5khe1bcjm7hy"
-path="res://.godot/imported/heart.png-e4c9cacde081f165402ad7c69da5bfce.ctex"
+uid="uid://c1mvhy76qkvyc"
+path="res://.godot/imported/chain.png-3b6d5855fff5c6ca9dc09cf8c406cae8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/heart.png"
-dest_files=["res://.godot/imported/heart.png-e4c9cacde081f165402ad7c69da5bfce.ctex"]
+source_file="res://Sprites/Skills/chain.png"
+dest_files=["res://.godot/imported/chain.png-3b6d5855fff5c6ca9dc09cf8c406cae8.ctex"]
 
 [params]
 

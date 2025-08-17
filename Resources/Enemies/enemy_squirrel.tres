@@ -1,22 +1,30 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=19 format=3 uid="uid://wjgq7g7wblih"]
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=27 format=3 uid="uid://wjgq7g7wblih"]
 
 [ext_resource type="Script" uid="uid://dfqgxkslxs6g4" path="res://Scripts/enemy_stats.gd" id="1_uvygt"]
 [ext_resource type="Texture2D" uid="uid://blvipre5llb46" path="res://Sprites/Squirrel/Dying/s_ded.png" id="2_1dcc5"]
 [ext_resource type="Texture2D" uid="uid://cosb1kwtcmvju" path="res://Sprites/Squirrel/Walking/s2.png" id="2_ceptt"]
 [ext_resource type="Texture2D" uid="uid://b1oipvfw8win1" path="res://Sprites/Squirrel/Walking/s3.png" id="3_1dcc5"]
 [ext_resource type="Texture2D" uid="uid://b3m5n71lhk30j" path="res://Sprites/Squirrel/Sleeping/s_sleep1.png" id="3_4kas2"]
+[ext_resource type="Texture2D" uid="uid://b88wuiy1h7n1b" path="res://Sprites/Squirrel/Running/belka2.png" id="4_56u1i"]
 [ext_resource type="Texture2D" uid="uid://bwlvv5yfnhy7q" path="res://Sprites/Squirrel/Sleeping/s_sleep2.png" id="4_ciojw"]
 [ext_resource type="Texture2D" uid="uid://duqcgmobyec57" path="res://Sprites/Squirrel/Walking/s4.png" id="4_l1mx0"]
+[ext_resource type="Texture2D" uid="uid://c1ijaf33ul5ei" path="res://Sprites/Squirrel/Running/belka3.png" id="5_gpu2s"]
 [ext_resource type="Texture2D" uid="uid://cxuuubsddc1uf" path="res://Sprites/Squirrel/Walking/s5.png" id="5_phnpu"]
 [ext_resource type="Texture2D" uid="uid://i5n01ugnbuwv" path="res://Sprites/Squirrel/Sleeping/s_sleep3.png" id="5_r3w25"]
+[ext_resource type="Texture2D" uid="uid://csrqgchfwx4ch" path="res://Sprites/Squirrel/Running/belka4.png" id="6_4n2ah"]
 [ext_resource type="Texture2D" uid="uid://dgj08pstcgxlc" path="res://Sprites/Squirrel/Walking/s6.png" id="6_ae54q"]
 [ext_resource type="Texture2D" uid="uid://bd12g7ebeomma" path="res://Sprites/Squirrel/Sleeping/s_sleep4.png" id="6_lae25"]
 [ext_resource type="Texture2D" uid="uid://dytkx5icvxev3" path="res://Sprites/Squirrel/Walking/s7.png" id="7_52gw4"]
 [ext_resource type="Texture2D" uid="uid://ufc4ra6h58ai" path="res://Sprites/Squirrel/Sleeping/s_sleep5.png" id="7_tt5ab"]
+[ext_resource type="Texture2D" uid="uid://oiae3w3bct2a" path="res://Sprites/Squirrel/Running/belka5.png" id="7_xiino"]
+[ext_resource type="Texture2D" uid="uid://bkkvv0wjw2su8" path="res://Sprites/Squirrel/Running/belka6.png" id="8_1apq2"]
 [ext_resource type="Texture2D" uid="uid://d0sjk2xyubsac" path="res://Sprites/Squirrel/Walking/s8.png" id="8_j6ld3"]
 [ext_resource type="Texture2D" uid="uid://doj1cm26mrbim" path="res://Sprites/Squirrel/Sleeping/s_sleep6.png" id="8_skgw6"]
+[ext_resource type="Texture2D" uid="uid://dbkyhvqxrqdu0" path="res://Sprites/Squirrel/Running/belka7.png" id="9_efdn2"]
 [ext_resource type="Texture2D" uid="uid://qgqvwxi6qy2o" path="res://Sprites/Squirrel/Sleeping/s_sleep7.png" id="9_jvrai"]
+[ext_resource type="Texture2D" uid="uid://cwpmlk4apk8xc" path="res://Sprites/Squirrel/Running/belka8.png" id="10_0w0pp"]
 [ext_resource type="Texture2D" uid="uid://cj6a2o5fyrpy" path="res://Sprites/Squirrel/Sleeping/s_sleep8.png" id="10_cvlkn"]
+[ext_resource type="Texture2D" uid="uid://dbxwpjpdms2ly" path="res://Sprites/Squirrel/Running/belka9.png" id="11_kk346"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mdpuu"]
 resource_local_to_scene = true
@@ -28,6 +36,35 @@ animations = [{
 "loop": true,
 "name": &"dead",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_56u1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gpu2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4n2ah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xiino")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1apq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_efdn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0w0pp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_kk346")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -89,7 +126,7 @@ animations = [{
 script = ExtResource("1_uvygt")
 name = "squirrel"
 scale = Vector2(1, 1)
-speed = 0.14
+speed = 0.06
 speedButtomError = 0.05
 speedTopError = 0.025
 spriteFrames = SubResource("SpriteFrames_mdpuu")

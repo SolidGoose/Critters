@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1cvg2tgstxcq"
-path="res://.godot/imported/cloud.png-f8c227979852edeaf9c5c33caa7e7e1f.ctex"
+uid="uid://0ywte5dx1xft"
+path="res://.godot/imported/perk_background.png-964fdd2e559ceefc23f29ff61dd0cf71.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/cloud.png"
-dest_files=["res://.godot/imported/cloud.png-f8c227979852edeaf9c5c33caa7e7e1f.ctex"]
+source_file="res://Sprites/Skills/perk_background.png"
+dest_files=["res://.godot/imported/perk_background.png-964fdd2e559ceefc23f29ff61dd0cf71.ctex"]
 
 [params]
 

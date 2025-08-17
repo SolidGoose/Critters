@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5khe1bcjm7hy"
-path="res://.godot/imported/heart.png-e4c9cacde081f165402ad7c69da5bfce.ctex"
+uid="uid://cshn5t3jl5q05"
+path="res://.godot/imported/belka11.png-ce94f40105505ef76e73dd55f69625de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/heart.png"
-dest_files=["res://.godot/imported/heart.png-e4c9cacde081f165402ad7c69da5bfce.ctex"]
+source_file="res://Sprites/Squirrel/Running/belka11.png"
+dest_files=["res://.godot/imported/belka11.png-ce94f40105505ef76e73dd55f69625de.ctex"]
 
 [params]
 

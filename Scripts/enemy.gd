@@ -6,6 +6,7 @@ var speed: float
 var runaway_speed: float = 0.5
 var isRunningAway: bool = false
 var spritePosition: Vector2
+var currentAnimation: String
 
 @onready var sprite: AnimatedSprite2D = $HitboxArea/Sprite
 @onready var confusionTimer: Timer = $ConfusionDuration
@@ -29,6 +30,7 @@ func run_away() -> void:
 	sprite.flip_h = true
 	sprite.rotation = 1.35
 	sprite.speed_scale = 3
+	sprite.play("run")
 
 
 func _process(delta: float) -> void:
@@ -40,6 +42,12 @@ func _process(delta: float) -> void:
 		run_away()
 	
 	if progress_ratio <= 0.0 and isRunningAway:
+		var loseLifeSfx: AudioStreamPlayer2D = get_node_or_null('/root/Level4/SFX/LoseLife')
+		if loseLifeSfx:
+			loseLifeSfx.play()
+		# var consoleLine: LineEdit = get_node_or_null('/root/Level4/Console/ConsoleLine')
+		# if consoleLine:
+		
 		Global.health -= 1
 		queue_free()
 
@@ -65,6 +73,7 @@ func death() -> void:
 
 
 func sleep() -> void:
+	currentAnimation = sprite.animation
 	confusionTimer.wait_time = Global.sleepingDuration
 	confusionTimer.start()
 	if sprite.animation != "sleep":
@@ -73,5 +82,8 @@ func sleep() -> void:
 
 
 func _on_confusion_duration_timeout() -> void:
-	sprite.play("walk")
+	if currentAnimation == "walk":
+		sprite.play("walk")
+	elif currentAnimation == "run":
+		sprite.play("run")
 	set_process(true)

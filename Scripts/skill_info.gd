@@ -3,7 +3,9 @@ extends Panel
 @onready var button: TextureButton = $SkillButton
 @onready var cooldown: TextureProgressBar = $SkillButton/Cooldown
 @onready var key: Label = $KeyPanel/Key
-@onready var time: Label = $TimePanel/Time
+# @onready var timePanel: Panel = $TimePanel
+# @onready var time: Label = $TimePanel/Time
+@onready var time: Label = $Time
 @onready var timer: Timer = $Timer
 
 @export var stats: SkillButtonStats
@@ -13,7 +15,8 @@ func _ready() -> void:
 	timer.wait_time = stats.cooldown
 	key.text = stats.key
 	button.texture_normal = stats.texture
-	time.text = "Ready!"
+	time.visible = false
+	# time.text = "Ready!"
 
 	cooldown.max_value = timer.wait_time
 	set_process(false)
@@ -26,11 +29,13 @@ func _process(delta: float) -> void:
 	
 func _on_skill_button_toggled(toggled_on:bool) -> void:
 	if toggled_on:
+		time.visible = true
 		timer.start()
 		button.disabled = true
 		set_process(true)
 	else:
-		time.text = "Ready!"
+		time.visible = false
+		# time.text = "Ready!"
 
 
 func _on_timer_timeout() -> void:

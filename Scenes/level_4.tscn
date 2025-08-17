@@ -1,22 +1,28 @@
-[gd_scene load_steps=24 format=3 uid="uid://ct0jsie786wrj"]
+[gd_scene load_steps=30 format=3 uid="uid://ct0jsie786wrj"]
 
-[ext_resource type="Script" uid="uid://unx1u5v87s0j" path="res://Scripts/level_1.gd" id="1_vk57k"]
-[ext_resource type="Texture2D" uid="uid://hoiema1lxr33" path="res://Sprites/Console/console_bg.png" id="2_chwpn"]
-[ext_resource type="Script" uid="uid://f67xt7mqsag2" path="res://Scripts/label.gd" id="3_7p6j4"]
-[ext_resource type="Script" uid="uid://b1lyb0drxtjf" path="res://Scripts/console_line.gd" id="3_xfk5q"]
-[ext_resource type="PackedScene" uid="uid://m67cvinwnvq2" path="res://Scenes/skill_info.tscn" id="4_7p6j4"]
-[ext_resource type="Texture2D" uid="uid://bb6g324oh8bun" path="res://Sprites/Console/console_border.png" id="4_af3po"]
-[ext_resource type="Texture2D" uid="uid://dj1ox0s3k0xkh" path="res://Sprites/planks.png" id="5_6r07y"]
-[ext_resource type="Texture2D" uid="uid://bb0yi55mmplgt" path="res://Sprites/heart.png" id="5_6444e"]
-[ext_resource type="Resource" uid="uid://dk3ivl136oob6" path="res://Resources/Skills/explosion_skill_button.tres" id="6_lsmp6"]
-[ext_resource type="Resource" uid="uid://c13x5qrx7ti0q" path="res://Resources/Skills/sleeping_skill_button.tres" id="7_xrdnt"]
-[ext_resource type="AudioStream" uid="uid://b2t11h8xnmian" path="res://Sounds/kaboom.ogg" id="8_xrdnt"]
-[ext_resource type="Resource" uid="uid://cd0gp0qwl7f1r" path="res://Resources/Skills/chain_skill_button.tres" id="10_af3po"]
-[ext_resource type="Texture2D" uid="uid://dv3e4wxph41m1" path="res://Sprites/food.png" id="12_6ioyp"]
-[ext_resource type="AudioStream" uid="uid://ck8vf1hyg1lud" path="res://Sounds/lighter.mp3" id="14_8yhm2"]
-[ext_resource type="AudioStream" uid="uid://ce7k7scdkccw5" path="res://Sounds/short_chime.ogg" id="15_pjppf"]
-[ext_resource type="AudioStream" uid="uid://dg82lu7g30gmi" path="res://Sounds/chain.ogg" id="16_yltlr"]
-[ext_resource type="AudioStream" uid="uid://bb5bjeqnsi8tv" path="res://Sounds/twinkle.mp3" id="17_6ssoq"]
+[ext_resource type="Script" uid="uid://unx1u5v87s0j" path="res://Scripts/level_1.gd" id="1_mbnb1"]
+[ext_resource type="Texture2D" uid="uid://hoiema1lxr33" path="res://Sprites/Console/console_bg.png" id="2_cxe20"]
+[ext_resource type="Script" uid="uid://b1lyb0drxtjf" path="res://Scripts/console_line.gd" id="3_fmsuk"]
+[ext_resource type="Texture2D" uid="uid://bfneatda6etnu" path="res://Sprites/Console/bottom_border.png" id="4_3oae0"]
+[ext_resource type="Texture2D" uid="uid://dj1ox0s3k0xkh" path="res://Sprites/planks.png" id="5_a51ki"]
+[ext_resource type="Script" uid="uid://f67xt7mqsag2" path="res://Scripts/label.gd" id="6_6xecf"]
+[ext_resource type="Texture2D" uid="uid://c5khe1bcjm7hy" path="res://Sprites/heart.png" id="7_qh6br"]
+[ext_resource type="PackedScene" uid="uid://m67cvinwnvq2" path="res://Scenes/skill_info.tscn" id="8_nqprj"]
+[ext_resource type="Resource" uid="uid://dk3ivl136oob6" path="res://Resources/Skills/explosion_skill_button.tres" id="9_dt3rr"]
+[ext_resource type="Resource" uid="uid://c13x5qrx7ti0q" path="res://Resources/Skills/sleeping_skill_button.tres" id="10_o5257"]
+[ext_resource type="Resource" uid="uid://cd0gp0qwl7f1r" path="res://Resources/Skills/chain_skill_button.tres" id="11_2a174"]
+[ext_resource type="Texture2D" uid="uid://dv3e4wxph41m1" path="res://Sprites/Food/food.png" id="12_sw1t4"]
+[ext_resource type="AudioStream" uid="uid://b2t11h8xnmian" path="res://Sounds/kaboom.ogg" id="13_6vef0"]
+[ext_resource type="AudioStream" uid="uid://ck8vf1hyg1lud" path="res://Sounds/lighter.mp3" id="14_glsh0"]
+[ext_resource type="AudioStream" uid="uid://ce7k7scdkccw5" path="res://Sounds/short_chime.ogg" id="15_j11ov"]
+[ext_resource type="AudioStream" uid="uid://dg82lu7g30gmi" path="res://Sounds/chain.ogg" id="16_gtxiy"]
+[ext_resource type="AudioStream" uid="uid://bb5bjeqnsi8tv" path="res://Sounds/twinkle.mp3" id="17_wfb3u"]
+[ext_resource type="AudioStream" uid="uid://k6gjkqkhk4ii" path="res://Sounds/guitar-plucked.ogg" id="18_cxe20"]
+[ext_resource type="AudioStream" uid="uid://bt0xtipcy60wd" path="res://Sounds/lose_life.wav" id="19_fmsuk"]
+[ext_resource type="AudioStream" uid="uid://dw5xlqc1qtckw" path="res://Sounds/wrong_word.mp3" id="20_6xecf"]
+[ext_resource type="AudioStream" uid="uid://cer7ysb7m581q" path="res://Sounds/game_over.wav" id="21_qh6br"]
+[ext_resource type="AudioStream" uid="uid://nhtk3cmlsegj" path="res://Sounds/you_won.wav" id="22_nqprj"]
+[ext_resource type="AudioStream" uid="uid://1to8rbf2813c" path="res://Sounds/squeak.ogg" id="23_qh6br"]
 
 [sub_resource type="Curve2D" id="Curve2D_6444e"]
 _data = {
@@ -46,8 +52,8 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_color = Color(0.8, 0.8, 0.8, 0)
 
-[node name="Level1" type="Node2D"]
-script = ExtResource("1_vk57k")
+[node name="Level4" type="Node2D"]
+script = ExtResource("1_mbnb1")
 
 [node name="SpawnCooldown" type="Timer" parent="."]
 wait_time = 3.0
@@ -152,8 +158,8 @@ size_flags_vertical = 8
 
 [node name="ConsoleBackground" type="Sprite2D" parent="Console"]
 z_index = 498
-position = Vector2(735, 75)
-texture = ExtResource("2_chwpn")
+position = Vector2(747, 81)
+texture = ExtResource("2_cxe20")
 
 [node name="Shadow" type="Panel" parent="Console"]
 z_index = 499
@@ -185,31 +191,31 @@ keep_editing_on_text_submit = true
 select_all_on_focus = true
 caret_blink = true
 caret_force_displayed = true
-script = ExtResource("3_xfk5q")
+script = ExtResource("3_fmsuk")
 metadata/_edit_use_anchors_ = true
 
 [node name="ConsoleOutline" type="Sprite2D" parent="Console"]
 z_index = 501
-position = Vector2(731, 75)
-texture = ExtResource("4_af3po")
+position = Vector2(510, 75)
+texture = ExtResource("4_3oae0")
 
 [node name="GUI" type="Node2D" parent="."]
 
 [node name="Planks" type="Sprite2D" parent="GUI"]
 position = Vector2(886, 493)
-texture = ExtResource("5_6r07y")
+texture = ExtResource("5_a51ki")
 
 [node name="IntensityLabel" type="Label" parent="GUI"]
-offset_left = 2068.0
-offset_top = -120.0
-offset_right = 2605.0
-offset_bottom = 37.0
+offset_left = 1370.0
+offset_top = -200.0
+offset_right = 1907.0
+offset_bottom = -43.0
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 80
 text = "Intensity: 0"
 horizontal_alignment = 2
 vertical_alignment = 1
-script = ExtResource("3_7p6j4")
+script = ExtResource("6_6xecf")
 
 [node name="PointsLabel" type="Label" parent="GUI"]
 offset_left = 1414.0
@@ -234,9 +240,9 @@ text = "Upgrade points: 0"
 horizontal_alignment = 2
 
 [node name="HealthIcon" type="Sprite2D" parent="GUI"]
-position = Vector2(42, 756)
-scale = Vector2(0.5, 0.507)
-texture = ExtResource("5_6444e")
+position = Vector2(50, 767)
+scale = Vector2(0.7, 0.71)
+texture = ExtResource("7_qh6br")
 centered = false
 
 [node name="HealthLabel" type="Label" parent="GUI"]
@@ -244,58 +250,81 @@ offset_left = 189.0
 offset_top = 752.0
 offset_right = 303.0
 offset_bottom = 889.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 47
 theme_override_font_sizes/font_size = 100
 text = "20"
 
-[node name="ExplosionSkill" parent="GUI" instance=ExtResource("4_7p6j4")]
-offset_left = -2.0
-offset_top = 930.0
-offset_right = 148.0
-offset_bottom = 1080.0
-stats = ExtResource("6_lsmp6")
+[node name="ExplosionSkill" parent="GUI" instance=ExtResource("8_nqprj")]
+offset_left = 6.0
+offset_top = 935.0
+offset_right = 156.0
+offset_bottom = 1085.0
+stats = ExtResource("9_dt3rr")
 
-[node name="SleepingSkill" parent="GUI" instance=ExtResource("4_7p6j4")]
-offset_left = 148.0
-offset_top = 930.0
-offset_right = 300.0
-offset_bottom = 1080.0
-stats = ExtResource("7_xrdnt")
+[node name="SleepingSkill" parent="GUI" instance=ExtResource("8_nqprj")]
+offset_left = 163.0
+offset_top = 935.0
+offset_right = 315.0
+offset_bottom = 1085.0
+stats = ExtResource("10_o5257")
 
-[node name="ChainSkill" parent="GUI" instance=ExtResource("4_7p6j4")]
-offset_left = 300.0
-offset_top = 930.0
-offset_right = 452.0
-offset_bottom = 1080.0
-stats = ExtResource("10_af3po")
+[node name="ChainSkill" parent="GUI" instance=ExtResource("8_nqprj")]
+offset_left = 314.0
+offset_top = 935.0
+offset_right = 466.0
+offset_bottom = 1085.0
+stats = ExtResource("11_2a174")
 
-[node name="Fruits" type="Sprite2D" parent="GUI"]
+[node name="Food" type="Sprite2D" parent="GUI"]
 z_index = 490
 position = Vector2(1322, 884)
 rotation = 0.122173
-texture = ExtResource("12_6ioyp")
+texture = ExtResource("12_sw1t4")
 
 [node name="SFX" type="Node2D" parent="."]
 
 [node name="Explosion" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("8_xrdnt")
-volume_db = 7.354
+stream = ExtResource("13_6vef0")
+volume_db = 0.526
 
 [node name="Music" type="AudioStreamPlayer2D" parent="SFX"]
 
 [node name="ConsoleExplosion" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("14_8yhm2")
+stream = ExtResource("14_glsh0")
 volume_db = 8.404
 
 [node name="ConsoleSleep" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("15_pjppf")
+stream = ExtResource("15_j11ov")
 volume_db = 1.051
 
 [node name="ConsoleChain" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("16_yltlr")
+stream = ExtResource("16_gtxiy")
 volume_db = 4.86
 
 [node name="Sleep" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("17_6ssoq")
+stream = ExtResource("17_wfb3u")
+
+[node name="CorrectWord" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("18_cxe20")
+volume_db = 8.404
+
+[node name="LoseLife" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("19_fmsuk")
+volume_db = -7.899
+
+[node name="WrongWord" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("20_6xecf")
+volume_db = -6.303
+
+[node name="GameOver" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("21_qh6br")
+
+[node name="YouWon" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("22_nqprj")
+
+[node name="Squeak" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("23_qh6br")
 
 [connection signal="timeout" from="SpawnCooldown" to="." method="_on_spawn_cooldown_timeout"]
 [connection signal="timeout" from="Clock" to="." method="_on_clock_timeout"]

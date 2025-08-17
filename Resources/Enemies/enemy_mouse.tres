@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=14 format=3 uid="uid://ctk2tti13tbm2"]
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=16 format=3 uid="uid://ctk2tti13tbm2"]
 
 [ext_resource type="Script" uid="uid://dfqgxkslxs6g4" path="res://Scripts/enemy_stats.gd" id="1_ffro8"]
 [ext_resource type="Texture2D" uid="uid://bbpo04g3abapa" path="res://Sprites/Mouse/Sleeping/m_sleep1.png" id="2_2qfjl"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bmuu07fmcsbix" path="res://Sprites/Mouse/Walking/1.png" id="2_qv3le"]
 [ext_resource type="Texture2D" uid="uid://264pwbx1e4mu" path="res://Sprites/Mouse/Walking/2.png" id="3_0n4pu"]
 [ext_resource type="Texture2D" uid="uid://y64tp74qel0r" path="res://Sprites/Mouse/Sleeping/m_sleep2.png" id="3_egdex"]
+[ext_resource type="Texture2D" uid="uid://fqfd4ojx51du" path="res://Sprites/Mouse/Running/mice_chese1.png" id="3_qsqd6"]
 [ext_resource type="Texture2D" uid="uid://c6r85dh5ik40l" path="res://Sprites/Mouse/Sleeping/m_sleep3.png" id="4_3egpi"]
+[ext_resource type="Texture2D" uid="uid://hcx6j7bwigaj" path="res://Sprites/Mouse/Running/mice_chese2.png" id="4_10o7y"]
 [ext_resource type="Texture2D" uid="uid://bm0ofeqtmadoj" path="res://Sprites/Mouse/Sleeping/m_sleep4.png" id="5_qsqd6"]
 [ext_resource type="Texture2D" uid="uid://j6cfyb23h3qy" path="res://Sprites/Mouse/Sleeping/m_sleep5.png" id="6_10o7y"]
 [ext_resource type="Texture2D" uid="uid://bjb5emhopf50c" path="res://Sprites/Mouse/Sleeping/m_sleep6.png" id="7_gb270"]
@@ -22,6 +24,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qsqd6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_10o7y")
+}],
+"loop": true,
+"name": &"run",
 "speed": 5.0
 }, {
 "frames": [{
@@ -69,7 +82,7 @@ animations = [{
 script = ExtResource("1_ffro8")
 name = "mouse"
 scale = Vector2(1, 1)
-speed = 0.08
+speed = 0.06
 speedButtomError = 0.01
 speedTopError = 0.01
 spriteFrames = SubResource("SpriteFrames_qv3le")
