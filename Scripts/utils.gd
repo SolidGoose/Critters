@@ -39,29 +39,53 @@ func get_bracket_cmd(text:String) -> String:
 	else:
 		return ""
 
-func is_sentence_pattern(text: String) -> String:
-	var pattern = r"^\w+( \w+)*"
-	return is_pattern(text, pattern)
+func is_sentence_pattern(text: String) -> Array:
+	#var pattern = r"^\w+(^,\w+)*"
+	#return is_pattern(text, pattern)
+	var words = text.split(",")
+	if words.size() > 0:
+		return words
+	else:
+		return []
 
 
 func parse_console_command(text: String) -> Dictionary:
 	# Text processing logic. In the end the command is stored in cmd, and sign in sign.
 	# Sentence is stored if found in sentenceStr
-	var bracketsignStr = is_bracket_or_sign_pattern(text)
-	var wordsignStr = is_word_or_sign_pattern(text)
-	var sentenceStr = is_sentence_pattern(text)
+	#var bracketsignStr = is_bracket_or_sign_pattern(text)
+	
 	var cmd = ""
+	var cmds = []
 	var mark = ""
 	
-	if bracketsignStr != "":
-		cmd = get_bracket_cmd(bracketsignStr)
-		mark = is_last_char_sign(bracketsignStr)
+	var last_char = text[text.length()-1]
+	if last_char == "!" or last_char == "?":
+		mark = last_char
+		text = text.substr(0, text.length()-1)
+	
+	last_char = text[text.length()-1]
+	if last_char != ",":
+		var words = text.split(",")
+		for w in words:
+			if w == "":
+				cmds = []
+				break
+			else:
+				cmds.append(w)
+	else:
+		mark = ""
+	print(cmds)
 		
-	if wordsignStr != "":
-		mark = is_last_char_sign(wordsignStr)
-		if mark == "":
-			cmd = wordsignStr
-		else:
-			cmd = wordsignStr.substr(0, wordsignStr.length()-1)
-
+	#if bracketsignStr != "":
+	#	cmd = get_bracket_cmd(bracketsignStr)
+	#	mark = is_last_char_sign(bracketsignStr)
+	#var wordsignStr = is_word_or_sign_pattern(text)
+	#if wordsignStr != "":
+	#	mark = is_last_char_sign(wordsignStr)
+	#	if mark == "":
+	#		cmd = wordsignStr
+	#	else:
+	#		cmd = wordsignStr.substr(0, wordsignStr.length()-1)
+			
+	print("cmd: " + cmd + ", mark: " + mark)
 	return {"cmd": cmd, "mark": mark}
