@@ -1,11 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://ct0jsie786wrj"]
+[gd_scene load_steps=34 format=3 uid="uid://ct0jsie786wrj"]
 
 [ext_resource type="Script" uid="uid://unx1u5v87s0j" path="res://Scripts/level_1.gd" id="1_mbnb1"]
 [ext_resource type="Texture2D" uid="uid://hoiema1lxr33" path="res://Sprites/Console/console_bg.png" id="2_cxe20"]
 [ext_resource type="Script" uid="uid://b1lyb0drxtjf" path="res://Scripts/console_line.gd" id="3_fmsuk"]
 [ext_resource type="Texture2D" uid="uid://bfneatda6etnu" path="res://Sprites/Console/bottom_border.png" id="4_3oae0"]
 [ext_resource type="Texture2D" uid="uid://dj1ox0s3k0xkh" path="res://Sprites/planks.png" id="5_a51ki"]
-[ext_resource type="Script" uid="uid://f67xt7mqsag2" path="res://Scripts/label.gd" id="6_6xecf"]
+[ext_resource type="PackedScene" uid="uid://f2pgjk4tgukh" path="res://Scenes/cat.tscn" id="5_nqprj"]
+[ext_resource type="FontFile" uid="uid://cxqfdj3wib38x" path="res://Fonts/Carlito-Regular.ttf" id="7_nqprj"]
 [ext_resource type="Texture2D" uid="uid://c5khe1bcjm7hy" path="res://Sprites/heart.png" id="7_qh6br"]
 [ext_resource type="PackedScene" uid="uid://m67cvinwnvq2" path="res://Scenes/skill_info.tscn" id="8_nqprj"]
 [ext_resource type="Resource" uid="uid://dk3ivl136oob6" path="res://Resources/Skills/explosion_skill_button.tres" id="9_dt3rr"]
@@ -14,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dv3e4wxph41m1" path="res://Sprites/Food/food.png" id="12_sw1t4"]
 [ext_resource type="AudioStream" uid="uid://b2t11h8xnmian" path="res://Sounds/kaboom.ogg" id="13_6vef0"]
 [ext_resource type="AudioStream" uid="uid://ck8vf1hyg1lud" path="res://Sounds/lighter.mp3" id="14_glsh0"]
+[ext_resource type="AudioStream" uid="uid://dsyojroou3uqk" path="res://Sounds/track1.ogg" id="15_2a174"]
 [ext_resource type="AudioStream" uid="uid://ce7k7scdkccw5" path="res://Sounds/short_chime.ogg" id="15_j11ov"]
 [ext_resource type="AudioStream" uid="uid://dg82lu7g30gmi" path="res://Sounds/chain.ogg" id="16_gtxiy"]
 [ext_resource type="AudioStream" uid="uid://bb5bjeqnsi8tv" path="res://Sounds/twinkle.mp3" id="17_wfb3u"]
@@ -23,6 +25,8 @@
 [ext_resource type="AudioStream" uid="uid://cer7ysb7m581q" path="res://Sounds/game_over.wav" id="21_qh6br"]
 [ext_resource type="AudioStream" uid="uid://nhtk3cmlsegj" path="res://Sounds/you_won.wav" id="22_nqprj"]
 [ext_resource type="AudioStream" uid="uid://1to8rbf2813c" path="res://Sounds/squeak.ogg" id="23_qh6br"]
+[ext_resource type="AudioStream" uid="uid://bmj7m4bv8clfm" path="res://Sounds/track2.ogg" id="26_sw1t4"]
+[ext_resource type="AudioStream" uid="uid://dnyx2hih16qjc" path="res://Sounds/track3.ogg" id="27_6vef0"]
 
 [sub_resource type="Curve2D" id="Curve2D_6444e"]
 _data = {
@@ -201,43 +205,25 @@ texture = ExtResource("4_3oae0")
 
 [node name="GUI" type="Node2D" parent="."]
 
+[node name="Cat" parent="GUI" instance=ExtResource("5_nqprj")]
+position = Vector2(1589, 443)
+
 [node name="Planks" type="Sprite2D" parent="GUI"]
 position = Vector2(886, 493)
 texture = ExtResource("5_a51ki")
 
 [node name="IntensityLabel" type="Label" parent="GUI"]
-offset_left = 1370.0
-offset_top = -200.0
-offset_right = 1907.0
-offset_bottom = -43.0
+offset_left = 1352.0
+offset_top = 24.0
+offset_right = 1889.0
+offset_bottom = 181.0
 size_flags_horizontal = 0
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("7_nqprj")
 theme_override_font_sizes/font_size = 80
-text = "Intensity: 0"
+text = "Level: 0"
 horizontal_alignment = 2
 vertical_alignment = 1
-script = ExtResource("6_6xecf")
-
-[node name="PointsLabel" type="Label" parent="GUI"]
-offset_left = 1414.0
-offset_top = 32.0
-offset_right = 1886.0
-offset_bottom = 118.0
-theme_override_font_sizes/font_size = 50
-text = "New skill point in: 0"
-horizontal_alignment = 2
-
-[node name="UpgradesLabel" type="Label" parent="GUI"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 1460.0
-offset_top = 116.0
-offset_right = 1887.0
-offset_bottom = 211.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 50
-text = "Upgrade points: 0"
-horizontal_alignment = 2
 
 [node name="HealthIcon" type="Sprite2D" parent="GUI"]
 position = Vector2(50, 767)
@@ -288,8 +274,6 @@ texture = ExtResource("12_sw1t4")
 stream = ExtResource("13_6vef0")
 volume_db = 0.526
 
-[node name="Music" type="AudioStreamPlayer2D" parent="SFX"]
-
 [node name="ConsoleExplosion" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("14_glsh0")
 volume_db = 8.404
@@ -326,7 +310,19 @@ stream = ExtResource("22_nqprj")
 [node name="Squeak" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("23_qh6br")
 
+[node name="Track1" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("15_2a174")
+
+[node name="Track2" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("26_sw1t4")
+
+[node name="Track3" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("27_6vef0")
+
 [connection signal="timeout" from="SpawnCooldown" to="." method="_on_spawn_cooldown_timeout"]
 [connection signal="timeout" from="Clock" to="." method="_on_clock_timeout"]
 [connection signal="text_changed" from="Console/ConsoleLine" to="." method="_on_console_line_text_changed"]
 [connection signal="text_submitted" from="Console/ConsoleLine" to="." method="_on_console_line_text_submitted"]
+[connection signal="finished" from="SFX/Track1" to="." method="_on_track_1_finished"]
+[connection signal="finished" from="SFX/Track2" to="." method="_on_track_2_finished"]
+[connection signal="finished" from="SFX/Track3" to="." method="_on_track_3_finished"]

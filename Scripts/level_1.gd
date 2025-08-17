@@ -16,7 +16,7 @@ var chainSkillButton: TextureButton
 @onready var sleepingSkillPanel: Panel = $GUI/SleepingSkill
 @onready var chainSkillPanel: Panel = $GUI/ChainSkill
 @onready var healthLabel: Label = $GUI/HealthLabel
-@onready var pointsLabel: Label = $GUI/PointsLabel
+@onready var levelLabel: Label = $GUI/IntensityLabel
 @onready var explosionSfx: AudioStreamPlayer2D = $SFX/Explosion
 @onready var sleepSfx: AudioStreamPlayer2D = $SFX/Sleep
 @onready var consoleExplosionSfx: AudioStreamPlayer2D = $SFX/ConsoleExplosion
@@ -25,6 +25,9 @@ var chainSkillButton: TextureButton
 @onready var correctWordSfx: AudioStreamPlayer2D = $SFX/CorrectWord
 @onready var wrongWordSfx: AudioStreamPlayer2D = $SFX/WrongWord
 @onready var squeakSfx: AudioStreamPlayer2D = $SFX/Squeak
+@onready var track1: AudioStreamPlayer2D = $SFX/Track1
+@onready var track2: AudioStreamPlayer2D = $SFX/Track2
+@onready var track3: AudioStreamPlayer2D = $SFX/Track3
 
 
 # Preloads
@@ -37,7 +40,8 @@ var enemyStats = [
 ]
 var explosionSkillStats = preload("res://Resources/Skills/explosion_skill.tres")
 var sleepingSkillStats = preload("res://Resources/Skills/sleeping_skill.tres")
-var s: float = 1.5
+var s: float = 2
+var k: float = 5
 
 
 func _ready() -> void:
@@ -47,15 +51,47 @@ func _ready() -> void:
 	sleepingSkillButton = sleepingSkillPanel.get_node('SkillButton')
 	chainSkillButton = chainSkillPanel.get_node('SkillButton')
 
+	track1.play()
+
 
 func _process(delta: float) -> void:
 	time += 0.016
-	spawnCooldown.wait_time = s*cos(0.2*time + PI) + 1 + s
+	if time > 50:
+		k = 4.5
+		levelLabel.text = "Level: 1"
+	if time > 100:
+		k = 4.0
+		levelLabel.text = "Level: 2"
+	if time > 150:
+		k = 3.5
+		levelLabel.text = "Level: 3"
+	if time > 200:
+		k = 3.0
+		levelLabel.text = "Level: 4"
+	if time > 250:
+		k = 2.5
+		levelLabel.text = "Level: 5"
+	if time > 300:
+		k = 2.0
+		levelLabel.text = "Level: 6"
+	if time > 350:
+		k = 1.5
+		levelLabel.text = "Level: 7"
+	if time > 400:
+		k = 1.0
+		levelLabel.text = "Level: 8"
+	if time > 450:
+		s = 1.0
+		levelLabel.text = "Level: 9"
+	if time > 500:
+		s = 0.5
+		levelLabel.text = "Level: 10"
+
+	spawnCooldown.wait_time = s*cos(0.2*time + PI) + k + s
 
 	healthLabel.text = str(Global.health)
-	pointsLabel.text = str("EXP: ", Global.points)
 	if Global.health <= 0:
-		console.text = "You lost! Press F5 to restart."
+		console.text = "Game Over!"
 		console.editable = false
 		spawnCooldown.stop()
 		set_process(false)
@@ -226,3 +262,15 @@ func _on_console_line_text_changed(new_text: String) -> void:
 					correctWordSfx.play()
 	
 	console.add_theme_color_override("font_color", console_text_color)
+
+
+func _on_track_1_finished() -> void:
+	track3.play()
+
+
+func _on_track_2_finished() -> void:
+	track1.play()
+
+
+func _on_track_3_finished() -> void:
+	track2.play()

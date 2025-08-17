@@ -1,6 +1,6 @@
 extends Node
 
-var health: int = 1000
+var health: int = 20
 var points: int = 0
 
 # Skills parameters
