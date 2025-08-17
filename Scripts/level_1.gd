@@ -114,8 +114,9 @@ func _on_console_line_text_submitted(new_text: String) -> void:
 	if cmds.size() > 1 and chainSkillButton.button_pressed:
 		cmds = []
 	var mark: String = parsedCommand['mark']
+	var enemiesKilled: int = 0
 
-	if enemyNodes.size() > 0:
+	if enemyNodes.size() > 0 and cmds.size() > 0:
 		for cmd in cmds:
 			for i in enemyNodes.size():
 				var enemy = enemyNodes[i]
@@ -128,17 +129,19 @@ func _on_console_line_text_submitted(new_text: String) -> void:
 						enemy.death()
 					else:
 						enemy.death()
+					enemiesKilled += 1
 					Global.points += cmd.length()
 					enemyNodes.remove_at(i)
 					break
-		if cmds.size() > 1:
-			chainSkillButton.button_pressed = true
-		if not explosionSkillButton.button_pressed and mark == "!":
-			explosionSkillButton.button_pressed = true
-			explosionSfx.play()
-		if not sleepingSkillButton.button_pressed and mark == "?":
-			sleepingSkillButton.button_pressed = true
-			explosionSfx.play()
+		if enemiesKilled > 0:
+			if cmds.size() > 1:
+				chainSkillButton.button_pressed = true
+			if not explosionSkillButton.button_pressed and mark == "!":
+				explosionSkillButton.button_pressed = true
+				explosionSfx.play()
+			if not sleepingSkillButton.button_pressed and mark == "?":
+				sleepingSkillButton.button_pressed = true
+				explosionSfx.play()
 
 	console.clear()
 
@@ -179,12 +182,12 @@ func _on_console_line_text_changed(new_text: String) -> void:
 			var word: Label = enemy.get_node_or_null('Word')
 			if word != null:
 				enemy_words.append(word.text)
-		
+
 		var word_error = false
 		for cmd in cmds:
 			if not cmd in enemy_words:
 				word_error = true
-	
+
 		if not word_error:
 			if mark == '':
 				console_text_color = Color.LIGHT_GREEN
