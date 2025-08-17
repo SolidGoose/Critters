@@ -55,26 +55,27 @@ func parse_console_command(text: String) -> Dictionary:
 	#var bracketsignStr = is_bracket_or_sign_pattern(text)
 	
 	var cmd = ""
-	var cmds = []
+	var cmds: Array[String] = []
 	var mark = ""
-	
-	var last_char = text[text.length()-1]
-	if last_char == "!" or last_char == "?":
-		mark = last_char
-		text = text.substr(0, text.length()-1)
-	
-	last_char = text[text.length()-1]
-	if last_char != ",":
-		var words = text.split(",")
-		for w in words:
-			if w == "":
-				cmds = []
-				break
-			else:
-				cmds.append(w)
-	else:
-		mark = ""
-	print(cmds)
+	var last_char = ''
+	if text.length() > 0:
+		last_char = text[text.length()-1]
+		if last_char == "!" or last_char == "?":
+			mark = last_char
+			text = text.substr(0, text.length()-1)
+	if text.length() > 0:
+		last_char = text[text.length()-1]
+		if last_char != ",":
+			var words = text.split(",")
+			for w in words:
+				if w == "":
+					cmds = []
+					break
+				else:
+					cmds.append(w)
+		else:
+			mark = ""
+	#print(cmds)
 		
 	#if bracketsignStr != "":
 	#	cmd = get_bracket_cmd(bracketsignStr)
@@ -87,5 +88,5 @@ func parse_console_command(text: String) -> Dictionary:
 	#	else:
 	#		cmd = wordsignStr.substr(0, wordsignStr.length()-1)
 			
-	print("cmd: " + cmd + ", mark: " + mark)
-	return {"cmd": cmd, "mark": mark}
+	#print("cmd: " + cmd + ", mark: " + mark)
+	return {"cmds": cmds, "mark": mark}
