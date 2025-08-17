@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ct0jsie786wrj"]
+[gd_scene load_steps=20 format=3 uid="uid://ct0jsie786wrj"]
 
 [ext_resource type="Script" uid="uid://unx1u5v87s0j" path="res://Scripts/level_1.gd" id="1_vk57k"]
 [ext_resource type="Texture2D" uid="uid://hoiema1lxr33" path="res://Sprites/Console/console_bg.png" id="2_chwpn"]
@@ -6,11 +6,13 @@
 [ext_resource type="Script" uid="uid://b1lyb0drxtjf" path="res://Scripts/console_line.gd" id="3_xfk5q"]
 [ext_resource type="PackedScene" uid="uid://m67cvinwnvq2" path="res://Scenes/skill_info.tscn" id="4_7p6j4"]
 [ext_resource type="Texture2D" uid="uid://bb6g324oh8bun" path="res://Sprites/Console/console_border.png" id="4_af3po"]
+[ext_resource type="Texture2D" uid="uid://dj1ox0s3k0xkh" path="res://Sprites/planks.png" id="5_6r07y"]
 [ext_resource type="Texture2D" uid="uid://bb0yi55mmplgt" path="res://Sprites/heart.png" id="5_6444e"]
 [ext_resource type="Resource" uid="uid://dk3ivl136oob6" path="res://Resources/Skills/explosion_skill_button.tres" id="6_lsmp6"]
 [ext_resource type="Resource" uid="uid://c13x5qrx7ti0q" path="res://Resources/Skills/sleeping_skill_button.tres" id="7_xrdnt"]
 [ext_resource type="AudioStream" uid="uid://b2t11h8xnmian" path="res://Sounds/kaboom.ogg" id="8_xrdnt"]
 [ext_resource type="Resource" uid="uid://cd0gp0qwl7f1r" path="res://Resources/Skills/chain_skill_button.tres" id="10_af3po"]
+[ext_resource type="Texture2D" uid="uid://dv3e4wxph41m1" path="res://Sprites/food.png" id="12_6ioyp"]
 
 [sub_resource type="Curve2D" id="Curve2D_6444e"]
 _data = {
@@ -52,6 +54,7 @@ wait_time = 3.0
 autostart = true
 
 [node name="Borders" type="Node2D" parent="."]
+visible = false
 z_index = -1000
 
 [node name="Border1" type="Line2D" parent="Borders"]
@@ -188,6 +191,10 @@ texture = ExtResource("4_af3po")
 
 [node name="GUI" type="Node2D" parent="."]
 
+[node name="Sprite2D" type="Sprite2D" parent="GUI"]
+position = Vector2(886, 493)
+texture = ExtResource("5_6r07y")
+
 [node name="IntensityLabel" type="Label" parent="GUI"]
 offset_left = 2068.0
 offset_top = -120.0
@@ -256,6 +263,12 @@ offset_top = 930.0
 offset_right = 452.0
 offset_bottom = 1080.0
 stats = ExtResource("10_af3po")
+
+[node name="Fruits" type="Sprite2D" parent="GUI"]
+z_index = 490
+position = Vector2(1322, 884)
+rotation = 0.122173
+texture = ExtResource("12_6ioyp")
 
 [node name="SFX" type="Node2D" parent="."]
 

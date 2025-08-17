@@ -6,5 +6,5 @@
 script = ExtResource("1_7ij50")
 name = "explosion"
 duration = 3
-radius = 2000
+radius = 200
 metadata/_custom_type_script = "uid://bqfhbtbxjttwp"

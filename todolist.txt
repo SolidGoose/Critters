@@ -1,4 +1,3 @@
-- Create more perks. Open them depending on the level or exp
 - Create several levels using different enemy types and skills
 - Game saving system
 - Add main menu

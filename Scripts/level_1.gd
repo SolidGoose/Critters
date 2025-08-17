@@ -93,32 +93,53 @@ func create_blast_area(spawnPosition: Vector2, mark: String) -> void:
 
 func _on_console_line_text_submitted(new_text: String) -> void:
 	var enemyNodes: Array[Node] = get_tree().get_nodes_in_group('EnemyPathFollow')
-	enemyNodes.sort_custom(func (a, b): return a.progress_ratio > b.progress_ratio)
+	enemyNodes.sort_custom(func (a, b):
+		var progressA
+		var progressB
+		var offsetA = 1 - a.progress_ratio
+		var offsetB = 1 - b.progress_ratio
+		if a.isRunningAway:
+			progressA = a.progress_ratio + offsetA
+		else:
+			progressA = a.progress_ratio
+		if b.isRunningAway:
+			progressB = b.progress_ratio + offsetB
+		else:
+			progressB = b.progress_ratio
+
+		return float(a.isRunningAway) + progressA >\
+			   float(b.isRunningAway) + progressB)
 
 	var parsedCommand: Dictionary = Utils.parse_console_command(new_text)
 	var cmds: Array[String] = parsedCommand['cmds']
-	var cmd: String = ""
-	if cmds.size() > 0:
-		cmd = cmds[0]
-	print(cmd)
+	if cmds.size() > 1 and chainSkillButton.button_pressed:
+		cmds = []
 	var mark: String = parsedCommand['mark']
 
 	if enemyNodes.size() > 0:
-		for enemy in enemyNodes:
-			var word: Label = enemy.get_node_or_null('Word')
-			if word != null and word.text == cmd:
-				if not explosionSkillButton.button_pressed and mark == "!":
-					create_blast_area(enemy.global_position, mark)
-					explosionSkillButton.button_pressed = true
-					explosionSfx.play()
-				elif not sleepingSkillButton.button_pressed and mark == "?":
-					create_blast_area(enemy.global_position, mark)
-					sleepingSkillButton.button_pressed = true
-					explosionSfx.play()
-					enemy.death()
-				else:
-					enemy.death()
-				Global.points += cmd.length()
-				break
+		for cmd in cmds:
+			for i in enemyNodes.size():
+				var enemy = enemyNodes[i]
+				var word: Label = enemy.get_node_or_null('Word')
+				if word != null and word.text == cmd:
+					if not explosionSkillButton.button_pressed and mark == "!":
+						create_blast_area(enemy.global_position, mark)
+					elif not sleepingSkillButton.button_pressed and mark == "?":
+						create_blast_area(enemy.global_position, mark)
+						enemy.death()
+					else:
+						enemy.death()
+					Global.points += cmd.length()
+					enemyNodes.remove_at(i)
+					break
+		if cmds.size() > 1:
+			chainSkillButton.button_pressed = true
+		if not explosionSkillButton.button_pressed and mark == "!":
+			explosionSkillButton.button_pressed = true
+			explosionSfx.play()
+		if not sleepingSkillButton.button_pressed and mark == "?":
+			sleepingSkillButton.button_pressed = true
+			explosionSfx.play()
+
 
 	console.clear()
