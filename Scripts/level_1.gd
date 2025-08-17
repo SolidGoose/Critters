@@ -156,10 +156,12 @@ func _on_console_line_text_submitted(new_text: String) -> void:
 			wrongWordSfx.play()
 
 	console.clear()
-
-
-func _on_console_line_text_changed(new_text: String) -> void:
+	
+func give_hint_based_on_text(new_text: String, enemynode = null) -> void:
 	var enemyNodes: Array[Node] = get_tree().get_nodes_in_group('EnemyPathFollow')
+	if enemynode != null:
+		enemyNodes.erase(enemynode)
+		
 	enemyNodes.sort_custom(func (a, b):
 		var progressA
 		var progressB
@@ -176,7 +178,7 @@ func _on_console_line_text_changed(new_text: String) -> void:
 
 		return float(a.isRunningAway) + progressA >\
 			   float(b.isRunningAway) + progressB)
-	
+		
 	var parsedCommand: Dictionary = Utils.parse_console_command(new_text)	
 	var cmds = parsedCommand['cmds']
 	var mark = parsedCommand['mark']
@@ -189,7 +191,6 @@ func _on_console_line_text_changed(new_text: String) -> void:
 		console_text_color = Color.WHITE	
 	else:		
 		correctWordSfx.pitch_scale = cmds.size()
-
 		# Build list of enemy words
 		var enemy_words: Array[String] = []
 		for enemy in enemyNodes:
@@ -226,3 +227,7 @@ func _on_console_line_text_changed(new_text: String) -> void:
 					correctWordSfx.play()
 	
 	console.add_theme_color_override("font_color", console_text_color)
+
+
+func _on_console_line_text_changed(new_text: String) -> void:
+	give_hint_based_on_text(new_text)
