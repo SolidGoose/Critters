@@ -9,16 +9,20 @@
 
 [node name="Sclera" type="Sprite2D" parent="."]
 clip_children = 2
-position = Vector2(-52, 40)
+position = Vector2(-50, 35)
 texture = ExtResource("1_e3a7r")
 
 [node name="LeftIris" type="Sprite2D" parent="Sclera"]
-position = Vector2(-86, -44)
+position = Vector2(-43, -78)
+rotation = 0.666716
 texture = ExtResource("2_lbfxi")
+offset = Vector2(-50, 30)
 
 [node name="RightIris" type="Sprite2D" parent="Sclera"]
-position = Vector2(20, 66)
+position = Vector2(82, 8)
+rotation = 0.249582
 texture = ExtResource("3_gjlwe")
+offset = Vector2(-50, 70)
 
 [node name="Body" type="Sprite2D" parent="."]
 texture = ExtResource("4_kc653")
