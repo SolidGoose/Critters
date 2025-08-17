@@ -45,11 +45,16 @@ func _process(delta: float) -> void:
 		var loseLifeSfx: AudioStreamPlayer2D = get_node_or_null('/root/Level4/SFX/LoseLife')
 		if loseLifeSfx:
 			loseLifeSfx.play()
-		# var consoleLine: LineEdit = get_node_or_null('/root/Level4/Console/ConsoleLine')
-		# if consoleLine:
+		
+		var consoleLine: LineEdit = get_node_or_null('/root/Level4/Console/ConsoleLine')
+		var level = get_node_or_null('/root/Level4')
+		
+		print('outside dead, consoletext: ' + consoleLine.text)
+		level.give_hint_based_on_text(consoleLine.text, self)
 		
 		Global.health -= 1
 		queue_free()
+		
 
 
 func death() -> void:
