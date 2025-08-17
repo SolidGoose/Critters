@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://besfl7f7kkokk"
-path="res://.godot/imported/tomb.png-166a0df7c62225955451b41dca839991.ctex"
+uid="uid://ufc4ra6h58ai"
+path="res://.godot/imported/s_sleep5.png-55c37c7b751c230faa315fa2e0ca070b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Squirrel/Dying/tomb.png"
-dest_files=["res://.godot/imported/tomb.png-166a0df7c62225955451b41dca839991.ctex"]
+source_file="res://Sprites/Squirrel/Sleeping/s_sleep5.png"
+dest_files=["res://.godot/imported/s_sleep5.png-55c37c7b751c230faa315fa2e0ca070b.ctex"]
 
 [params]
 
