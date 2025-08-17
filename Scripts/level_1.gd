@@ -96,13 +96,17 @@ func _on_console_line_text_submitted(new_text: String) -> void:
 	enemyNodes.sort_custom(func (a, b): return a.progress_ratio > b.progress_ratio)
 
 	var parsedCommand: Dictionary = Utils.parse_console_command(new_text)
-	var cmd: String = parsedCommand['cmd']
+	var cmds: Array[String] = parsedCommand['cmds']
+	var cmd: String = ""
+	if cmds.size() > 0:
+		cmd = cmds[0]
+	print(cmd)
 	var mark: String = parsedCommand['mark']
 
 	if enemyNodes.size() > 0:
 		for enemy in enemyNodes:
 			var word: Label = enemy.get_node_or_null('Word')
-			if word.text == cmd:
+			if word != null and word.text == cmd:
 				if not explosionSkillButton.button_pressed and mark == "!":
 					create_blast_area(enemy.global_position, mark)
 					explosionSkillButton.button_pressed = true
