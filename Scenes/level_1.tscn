@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ct0jsie786wrj"]
+[gd_scene load_steps=24 format=3 uid="uid://ct0jsie786wrj"]
 
 [ext_resource type="Script" uid="uid://unx1u5v87s0j" path="res://Scripts/level_1.gd" id="1_vk57k"]
 [ext_resource type="Texture2D" uid="uid://hoiema1lxr33" path="res://Sprites/Console/console_bg.png" id="2_chwpn"]
@@ -13,6 +13,10 @@
 [ext_resource type="AudioStream" uid="uid://b2t11h8xnmian" path="res://Sounds/kaboom.ogg" id="8_xrdnt"]
 [ext_resource type="Resource" uid="uid://cd0gp0qwl7f1r" path="res://Resources/Skills/chain_skill_button.tres" id="10_af3po"]
 [ext_resource type="Texture2D" uid="uid://dv3e4wxph41m1" path="res://Sprites/food.png" id="12_6ioyp"]
+[ext_resource type="AudioStream" uid="uid://ck8vf1hyg1lud" path="res://Sounds/lighter.mp3" id="14_8yhm2"]
+[ext_resource type="AudioStream" uid="uid://ce7k7scdkccw5" path="res://Sounds/short_chime.ogg" id="15_pjppf"]
+[ext_resource type="AudioStream" uid="uid://dg82lu7g30gmi" path="res://Sounds/chain.ogg" id="16_yltlr"]
+[ext_resource type="AudioStream" uid="uid://bb5bjeqnsi8tv" path="res://Sounds/twinkle.mp3" id="17_6ssoq"]
 
 [sub_resource type="Curve2D" id="Curve2D_6444e"]
 _data = {
@@ -277,6 +281,21 @@ stream = ExtResource("8_xrdnt")
 volume_db = 7.354
 
 [node name="Music" type="AudioStreamPlayer2D" parent="SFX"]
+
+[node name="ConsoleExplosion" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("14_8yhm2")
+volume_db = 8.404
+
+[node name="ConsoleSleep" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("15_pjppf")
+volume_db = 1.051
+
+[node name="ConsoleChain" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("16_yltlr")
+volume_db = 4.86
+
+[node name="Sleep" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("17_6ssoq")
 
 [connection signal="timeout" from="SpawnCooldown" to="." method="_on_spawn_cooldown_timeout"]
 [connection signal="timeout" from="Clock" to="." method="_on_clock_timeout"]

@@ -18,6 +18,11 @@ var chainSkillButton: TextureButton
 @onready var healthLabel: Label = $GUI/HealthLabel
 @onready var pointsLabel: Label = $GUI/PointsLabel
 @onready var explosionSfx: AudioStreamPlayer2D = $SFX/Explosion
+@onready var sleepSfx: AudioStreamPlayer2D = $SFX/Sleep
+@onready var consoleExplosionSfx: AudioStreamPlayer2D = $SFX/ConsoleExplosion
+@onready var consoleSleepSfx: AudioStreamPlayer2D = $SFX/ConsoleSleep
+@onready var consoleChainSfx: AudioStreamPlayer2D = $SFX/ConsoleChain
+
 
 # Preloads
 var enemyScene = preload("res://Scenes/enemy.tscn")
@@ -141,7 +146,7 @@ func _on_console_line_text_submitted(new_text: String) -> void:
 				explosionSfx.play()
 			if not sleepingSkillButton.button_pressed and mark == "?":
 				sleepingSkillButton.button_pressed = true
-				explosionSfx.play()
+				sleepSfx.play()
 
 	console.clear()
 
@@ -191,13 +196,23 @@ func _on_console_line_text_changed(new_text: String) -> void:
 		if not word_error:
 			if mark == '':
 				console_text_color = Color.LIGHT_GREEN
-			if mark == '!' and (not explosionSkillButton.button_pressed):
-				console_text_color = Color.RED
-			if mark == '?' and (not sleepingSkillButton.button_pressed):
-				console_text_color = Color.VIOLET
+			if mark == '!':
+				if (not explosionSkillButton.button_pressed):
+					console_text_color = Color.CORAL
+					consoleExplosionSfx.play()
+				else:
+					console_text_color = Color.LIGHT_GREEN
+			if mark == '?':
+				if (not sleepingSkillButton.button_pressed):
+					console_text_color = Color.VIOLET
+					consoleSleepSfx.play()
+				else:
+					console_text_color = Color.LIGHT_GREEN
 			if cmds.size() > 1 and (not chainSkillButton.button_pressed):
 				console.add_theme_color_override('font_outline_color', Color.SADDLE_BROWN)
 				console.add_theme_constant_override("outline_size", 40)
+				if mark == '':
+					consoleChainSfx.play()
 	
 	console.add_theme_color_override("font_color", console_text_color)
 	
