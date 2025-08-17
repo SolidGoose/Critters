@@ -7,12 +7,14 @@ var zIndex: int = -100
 var time: float = 0.0
 var explosionSkillButton: TextureButton
 var sleepingSkillButton: TextureButton
+var chainSkillButton: TextureButton
 
 # Onready nodes
 @onready var console: LineEdit = $Console/ConsoleLine
 @onready var spawnCooldown: Timer = $SpawnCooldown
 @onready var explosionSkillPanel: Panel = $GUI/ExplosionSkill
 @onready var sleepingSkillPanel: Panel = $GUI/SleepingSkill
+@onready var chainSkillPanel: Panel = $GUI/ChainSkill
 @onready var healthLabel: Label = $GUI/HealthLabel
 @onready var pointsLabel: Label = $GUI/PointsLabel
 @onready var explosionSfx: AudioStreamPlayer2D = $SFX/Explosion
@@ -34,6 +36,7 @@ func _ready() -> void:
 
 	explosionSkillButton = explosionSkillPanel.get_node('SkillButton')
 	sleepingSkillButton = sleepingSkillPanel.get_node('SkillButton')
+	chainSkillButton = chainSkillPanel.get_node('SkillButton')
 
 
 func _process(delta: float) -> void:
