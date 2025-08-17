@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yil1t16rthow"
-path="res://.godot/imported/m_ded.png-a3b0438b727e2e768bd372701c7dbd89.ctex"
+uid="uid://qgqvwxi6qy2o"
+path="res://.godot/imported/s_sleep7.png-c3902a9c259e016bdbce8d5357a8a68b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Mouse/Dying/m_ded.png"
-dest_files=["res://.godot/imported/m_ded.png-a3b0438b727e2e768bd372701c7dbd89.ctex"]
+source_file="res://Sprites/Squirrel/Sleeping/s_sleep7.png"
+dest_files=["res://.godot/imported/s_sleep7.png-c3902a9c259e016bdbce8d5357a8a68b.ctex"]
 
 [params]
 

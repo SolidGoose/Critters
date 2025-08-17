@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://f2pgjk4tgukh"]
+
+[ext_resource type="Texture2D" uid="uid://cyohe210sgm3d" path="res://Sprites/Cat/eyes.png" id="1_e3a7r"]
+[ext_resource type="Texture2D" uid="uid://des8354esypby" path="res://Sprites/Cat/cateye_left.png" id="2_lbfxi"]
+[ext_resource type="Texture2D" uid="uid://dp3k7br25bdyf" path="res://Sprites/Cat/cateye_right.png" id="3_gjlwe"]
+[ext_resource type="Texture2D" uid="uid://bl4cigh044yty" path="res://Sprites/Cat/kitty.png" id="4_kc653"]
+
+[node name="Cat" type="Node2D"]
+
+[node name="Sclera" type="Sprite2D" parent="."]
+clip_children = 2
+position = Vector2(-50, 35)
+texture = ExtResource("1_e3a7r")
+
+[node name="LeftIris" type="Sprite2D" parent="Sclera"]
+position = Vector2(-43, -78)
+rotation = 0.666716
+texture = ExtResource("2_lbfxi")
+offset = Vector2(-50, 30)
+
+[node name="RightIris" type="Sprite2D" parent="Sclera"]
+position = Vector2(82, 8)
+rotation = 0.249582
+texture = ExtResource("3_gjlwe")
+offset = Vector2(-50, 70)
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("4_kc653")

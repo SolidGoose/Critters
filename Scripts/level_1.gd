@@ -140,7 +140,6 @@ func _on_console_line_text_submitted(new_text: String) -> void:
 			sleepingSkillButton.button_pressed = true
 			explosionSfx.play()
 
-
 	console.clear()
 
 
