@@ -58,7 +58,7 @@ func death() -> void:
 		.tween_property(sprite, "position", Vector2(0, 50), 0.2)\
 		.set_trans(Tween.TRANS_SINE)
 	deathAnimtionTween\
-		.tween_property(sprite, "modulate", Color(1,1,1,0), 1)\
+		.tween_property(sprite, "modulate", Color(1, 1 , 1 , 0), 1)\
 		.set_trans(Tween.TRANS_EXPO)
 	await deathAnimtionTween.finished
 	queue_free()

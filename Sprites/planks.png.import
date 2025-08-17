@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bglyr831fgcsu"
-path="res://.godot/imported/tomb.png-0b0aefd1cf525141b32c02ce0f2446a8.ctex"
+uid="uid://dj1ox0s3k0xkh"
+path="res://.godot/imported/planks.png-1db92d80b075b550c186986aedec8157.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Mouse/Dying/tomb.png"
-dest_files=["res://.godot/imported/tomb.png-0b0aefd1cf525141b32c02ce0f2446a8.ctex"]
+source_file="res://Sprites/planks.png"
+dest_files=["res://.godot/imported/planks.png-1db92d80b075b550c186986aedec8157.ctex"]
 
 [params]
 

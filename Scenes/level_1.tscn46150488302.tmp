@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ct0jsie786wrj"]
+[gd_scene load_steps=14 format=3 uid="uid://ct0jsie786wrj"]
 
 [ext_resource type="Script" uid="uid://unx1u5v87s0j" path="res://Scripts/level_1.gd" id="1_vk57k"]
 [ext_resource type="Texture2D" uid="uid://hoiema1lxr33" path="res://Sprites/Console/console_bg.png" id="2_chwpn"]
@@ -28,16 +28,6 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -199, -200, 0, 0, 0, 0, 855, 960)
 }
 point_count = 2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uy8f0"]
-bg_color = Color(0, 0, 0, 0.207843)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_af3po"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chwpn"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_color = Color(0.8, 0.8, 0.8, 0)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_vk57k")
@@ -143,36 +133,25 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 
 [node name="ConsoleBackground" type="Sprite2D" parent="Console"]
-z_index = 498
+z_index = 499
 position = Vector2(735, 75)
 texture = ExtResource("2_chwpn")
-
-[node name="Shadow" type="Panel" parent="Console"]
-z_index = 499
-layout_mode = 0
-offset_left = 8.0
-offset_top = 7.0
-offset_right = 1461.0
-offset_bottom = 152.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_uy8f0")
 
 [node name="ConsoleLine" type="LineEdit" parent="Console"]
 z_index = 500
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.517007
-anchor_top = 0.506667
-anchor_right = 0.517007
-anchor_bottom = 0.506667
-offset_left = -685.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -735.0
 offset_top = -75.0
-offset_right = 715.0
+offset_right = 735.0
 offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 60
-theme_override_styles/focus = SubResource("StyleBoxFlat_af3po")
-theme_override_styles/normal = SubResource("StyleBoxFlat_chwpn")
 keep_editing_on_text_submit = true
 select_all_on_focus = true
 caret_blink = true

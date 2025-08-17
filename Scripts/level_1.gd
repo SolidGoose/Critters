@@ -9,7 +9,7 @@ var explosionSkillButton: TextureButton
 var sleepingSkillButton: TextureButton
 
 # Onready nodes
-@onready var console: LineEdit = $ConsoleLine
+@onready var console: LineEdit = $Console/ConsoleLine
 @onready var spawnCooldown: Timer = $SpawnCooldown
 @onready var explosionSkillPanel: Panel = $GUI/ExplosionSkill
 @onready var sleepingSkillPanel: Panel = $GUI/SleepingSkill
@@ -30,9 +30,10 @@ var sleepingSkillStats = preload("res://Resources/Skills/sleeping_skill.tres")
 
 
 func _ready() -> void:
+	randomize()
+
 	explosionSkillButton = explosionSkillPanel.get_node('SkillButton')
 	sleepingSkillButton = sleepingSkillPanel.get_node('SkillButton')
-	randomize()
 
 
 func _process(delta: float) -> void:
@@ -48,14 +49,6 @@ func _process(delta: float) -> void:
 		spawnCooldown.stop()
 		set_process(false)
 		return
-
-
-func get_word_dict_from_node(node: Node) -> Dictionary:
-	var label = node.get_node('Word')
-	if label:
-		return {label.text: node}
-	else:
-		return {}
 
 
 func pick_random_enemy() -> EnemyStats:
@@ -78,7 +71,6 @@ func _on_spawn_cooldown_timeout() -> void:
 	var tracks = get_node('Tracks').get_children()
 	var track = tracks.pick_random()
 
-	# print(track.name + " spawned enemy: " + enemy.stats.name)
 	var trackNumber = int(track.name.substr(5, 1))
 	enemy.z_index = trackNumber * 20
 
@@ -105,19 +97,20 @@ func _on_console_line_text_submitted(new_text: String) -> void:
 	var mark: String = parsedCommand['mark']
 
 	if enemyNodes.size() > 0:
-		var wordsDict = enemyNodes.map(get_word_dict_from_node)
-		for dict in wordsDict:
-			if dict.has(cmd):
+		for enemy in enemyNodes:
+			var word: Label = enemy.get_node_or_null('Word')
+			if word.text == cmd:
 				if not explosionSkillButton.button_pressed and mark == "!":
-					create_blast_area(dict[cmd].global_position, mark)
+					create_blast_area(enemy.global_position, mark)
 					explosionSkillButton.button_pressed = true
 					explosionSfx.play()
 				elif not sleepingSkillButton.button_pressed and mark == "?":
-					create_blast_area(dict[cmd].global_position, mark)
+					create_blast_area(enemy.global_position, mark)
 					sleepingSkillButton.button_pressed = true
 					explosionSfx.play()
+					enemy.death()
 				else:
-					dict[cmd].death()
+					enemy.death()
 				Global.points += cmd.length()
 				break
 

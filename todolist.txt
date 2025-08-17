@@ -3,9 +3,9 @@
 - Game saving system
 - Add main menu
 - Support game over
+- Add tutorials
 - Add spit ability to mouse
 
 Extra mile
 
 - Upgrade menu
-

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dfqgxkslxs6g4" path="res://Scripts/enemy_stats.gd" id="1_ffro8"]
 [ext_resource type="Texture2D" uid="uid://bbpo04g3abapa" path="res://Sprites/Mouse/Sleeping/m_sleep1.png" id="2_2qfjl"]
-[ext_resource type="Texture2D" uid="uid://bglyr831fgcsu" path="res://Sprites/Mouse/Dying/tomb.png" id="2_egdex"]
+[ext_resource type="Texture2D" uid="uid://yil1t16rthow" path="res://Sprites/Mouse/Dying/m_ded.png" id="2_egdex"]
 [ext_resource type="Texture2D" uid="uid://bmuu07fmcsbix" path="res://Sprites/Mouse/Walking/1.png" id="2_qv3le"]
 [ext_resource type="Texture2D" uid="uid://264pwbx1e4mu" path="res://Sprites/Mouse/Walking/2.png" id="3_0n4pu"]
 [ext_resource type="Texture2D" uid="uid://y64tp74qel0r" path="res://Sprites/Mouse/Sleeping/m_sleep2.png" id="3_egdex"]
